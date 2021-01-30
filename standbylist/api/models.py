@@ -1,5 +1,5 @@
 from django.db import models
-from geo.py import geodesic
+#from geo.py import geodesic
 
 # Create your models here.
 
