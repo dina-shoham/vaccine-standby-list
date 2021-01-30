@@ -65,3 +65,18 @@ class Patient(models.Model):
     healthcareNum = models.CharField(unique=True)
     #can an attribute be an object we create? 
     #enum Clinic home clinic
+
+
+    class Clinic(models.Model):
+        #location/address @ joey
+        name = models.CharField()
+        #list field?
+        #queue of patients
+        #list of today's available appointments
+        
+        username=models.CharField()
+        password=models.CharField()
+
+
+    class Appointment(models.Model):
+        date=models.DateField(auto_now_add=True)
