@@ -44,17 +44,9 @@ export default class PatientForm extends Component {
     this.setState({ highRiskHousehold: event.target.checked });
   };
 
-  //   handleOccupation = (event) => {
-  //     this.setState({ occupation: event.target.value });
-  //   };
-
-  //   handleRiskFactors = (event) => {
-  //     this.setState({ riskFactors: event.target.value });
-  //   };
-
   handleSubmit = (event) => {
-    event.preventDefault();
-    const vaccineStatus = this.state.firstDose ? "One dose" : "No doses";
+    event.preventDefault(); //stop it from refreshing for now so we can see the console.log
+    const vaccineStatus = this.state.firstDose ? "1D" : "0D";
     console.log(this.state);
     const requestOptions = {
       method: "POST",
@@ -66,6 +58,7 @@ export default class PatientForm extends Component {
         phoneNumber: this.state.phoneNumber,
         email: this.state.email,
         vaccinationStatus: vaccineStatus,
+        notificationStatus: "Unnotified",
         address: this.state.address,
         occupation: this.state.occupation,
         transport: this.state.transportation,
@@ -76,7 +69,7 @@ export default class PatientForm extends Component {
         lon: this.state.longitude,
       }),
     };
-    fetch("/api/patient", requestOptions)
+    fetch("/api/create-patient", requestOptions)
       .then((response) => response.json())
       .then((data) => console.log(data));
   };
