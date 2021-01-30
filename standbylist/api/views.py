@@ -63,7 +63,8 @@ class CreatePatientView(APIView):
                               riskFactors=riskFactors)
             patient.save()
             return Response(PatientSerializer(patient).data, status=status.HTTP_201_CREATED)
-        # return Response(PatientSerializer(patient).data, status=status.HTTP_400_BAD_REQUEST)
+        # else:
+        #     return Response(PatientSerializer(patient).errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CreateClinicView(APIView):

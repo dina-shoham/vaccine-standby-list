@@ -47,10 +47,12 @@ export default class PatientForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault(); //stop it from refreshing for now so we can see the console.log
     const vaccineStatus = this.state.firstDose ? "1D" : "0D";
-    console.log(this.state);
+    //console.log(this.state);
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         age: this.state.age,
         firstName: this.state.firstName,
@@ -58,19 +60,18 @@ export default class PatientForm extends Component {
         phoneNumber: this.state.phoneNumber,
         email: this.state.email,
         vaccinationStatus: vaccineStatus,
-        notificationStatus: "Unnotified",
-        address: this.state.address,
         occupation: this.state.occupation,
         transport: this.state.transportation,
         highRiskHousehold: this.state.highRiskHousehold,
         healthcareNum: this.state.healthCareNumber,
-        riskFactors: this.state.riskFactors,
         lat: this.state.latitude,
         lon: this.state.longitude,
+        riskFactors: this.state.riskFactors,
       }),
     };
+
     fetch("/api/create-patient", requestOptions)
-      .then((response) => response.json())
+      .then((response) => response)
       .then((data) => console.log(data));
   };
 
