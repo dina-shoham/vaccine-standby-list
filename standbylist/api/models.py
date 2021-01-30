@@ -65,14 +65,10 @@ class Patient(models.Model):
     transport = models.CharField(max_length=255, choices=MODE_OF_TRANSIT)
     highRiskHousehold = models.BooleanField()
     healthcareNum = models.CharField(max_length=255, unique=True)
-<<<<<<< HEAD
     lat = models.FloatField("latitude", null=True)
     lon = models.FloatField("longitude", null=True)
-=======
-    lat = models.FloatField("latitude")
-    lon = models.FloatField("longitude")
     riskFactors = models.models.IntegerField()
->>>>>>> b84d8f63e3d2089f48f23d42ac6c6b713f0616d9
+
 
 
 class Clinic(models.Model):
@@ -131,7 +127,12 @@ def findPatient(clinic, clinicRange):
         else:
             house = 1
         
-        risk = (p.riskFactors+1)*p.age*(5-tier)*house
+        if p.vaccinationStatus == "0D":
+            status = 1
+        elif p.vaccinationStatus == "1D":
+            status = 2.5
+
+        risk = (p.riskFactors+1)*p.age*(5-tier)*house*status
         if(curHighestRisk < risk):
             curHighestRisk = risk
             curPatient = p
