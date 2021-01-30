@@ -1,5 +1,5 @@
 from django.db import models
-from geo.py import patientClinicDist
+from geo.py import geodesic
 
 # Create your models here.
 
@@ -104,7 +104,7 @@ class Appointment(models.Model):
     time = models.TimeField()
     date = models.DateField(auto_now_add=True)
 
-def newAppointment(clinic, clinicRange):
+def findPatient(clinic, clinicRange):
     patients = Patient.objects.filter(vaccinationStatus != "2D" and             #grabs list of patients who have less than 2 doses
         notificationStatus == "Unnotified" and                                  #and who are unnotified
         patientClinicDist(clinic.lat, clinic.lon, lat, lon) < clinicRange)      #and who are within range
@@ -125,39 +125,46 @@ def newAppointment(clinic, clinicRange):
             house = 2
         else:
             house = 1
+        
         risk = (p.riskFactors+1)*p.age*(5-tier)*house
-        if(curHighestRisk < p.riskFactors):
+        if(curHighestRisk < risk):
+            curHighestRisk = risk
+            curPatient = p
+    
+    return curPatient
+
+def patientClinicDist(patientLat, patientLon, clinicLat, clinicLon):
+    patient = (patientLat, patientLon)
+    clinic = (clinicLat, clinicLon)
+    return (geodesic(patient,clinic).km)
 
 
-
-
-
-    # ALBERTA = 'Alberta'
-    # BC = 'British Columbia'
-    # MANITOBA = 'Manitoba'
-    # NB = 'New Brunswick'
-    # NEWFL = 'Newfoundland and Labrador'
-    # NWT = 'Northwest Territories'
-    # NS = 'Nova Scotia'
-    # NUNAVUT = 'Nunavut'
-    # ONTARIO = 'Ontario'
-    # PEI = 'Prince Edward Island'
-    # QUEBEC = 'Quebec'
-    # SK = 'Saskatchewan'
-    # YUKON = 'Yukon'
-    # PROVINCE = (
-    #     (ALBERTA, 'Alberta'),
-    #     (BC, 'British Columbia'),
-    #     (MANITOBA, 'Manitoba'),
-    #     (NB, 'New Brunswick'),
-    #     (NEWFL, 'Newfoundland and Labrador'),
-    #     (NWT, 'Northwest Territories'),
-    #     (NS, 'Nova Scotia'),
-    #     (NUNAVUT, 'Nunavut'),
-    #     (ONTARIO, 'Ontario'),
-    #     (PEI, 'Prince Edward Island'),
-    #     (QUEBEC, 'Quebec'),
-    #     (SK, 'Saskatchewan'),
-    #     (YUKON, 'Yukon'),
-    # )
-    # province = models.CharField(max_length=255, choices=PROVINCE)
+# ALBERTA = 'Alberta'
+# BC = 'British Columbia'
+# MANITOBA = 'Manitoba'
+# NB = 'New Brunswick'
+# NEWFL = 'Newfoundland and Labrador'
+# NWT = 'Northwest Territories'
+# NS = 'Nova Scotia'
+# NUNAVUT = 'Nunavut'
+# ONTARIO = 'Ontario'
+# PEI = 'Prince Edward Island'
+# QUEBEC = 'Quebec'
+# SK = 'Saskatchewan'
+# YUKON = 'Yukon'
+# PROVINCE = (
+#     (ALBERTA, 'Alberta'),
+#     (BC, 'British Columbia'),
+#     (MANITOBA, 'Manitoba'),
+#     (NB, 'New Brunswick'),
+#     (NEWFL, 'Newfoundland and Labrador'),
+#     (NWT, 'Northwest Territories'),
+#     (NS, 'Nova Scotia'),
+#     (NUNAVUT, 'Nunavut'),
+#     (ONTARIO, 'Ontario'),
+#     (PEI, 'Prince Edward Island'),
+#     (QUEBEC, 'Quebec'),
+#     (SK, 'Saskatchewan'),
+#     (YUKON, 'Yukon'),
+# )
+# province = models.CharField(max_length=255, choices=PROVINCE)
