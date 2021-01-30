@@ -1,23 +1,25 @@
 from django.db import models
 
 # Create your models here.
+
+
 class Patient(models.Model):
-    NODOSE='0D'
-    ONEDOSE='1D'
-    TWODOSE='2D'
-    VACCINATION_STATUS=(
+    NODOSE = '0D'
+    ONEDOSE = '1D'
+    TWODOSE = '2D'
+    VACCINATION_STATUS = (
         (NODOSE, 'No doses'),
         (ONEDOSE, 'One dose'),
         (TWODOSE, 'Two doses'),
     )
 
-    UNNOTIFIED='Unnotified'
-    NOTIFIED='Notified'
-    CONFIRMED='Confirmed'
-    DECLINED='Declined'
-    TIMEOUT='Timed out'
-    VACCINATED='Vaccinated'
-    NOTIFICATION_STATUS=(
+    UNNOTIFIED = 'Unnotified'
+    NOTIFIED = 'Notified'
+    CONFIRMED = 'Confirmed'
+    DECLINED = 'Declined'
+    TIMEOUT = 'Timed out'
+    VACCINATED = 'Vaccinated'
+    NOTIFICATION_STATUS = (
         (UNNOTIFIED, 'Unnotified'),
         (NOTIFIED, 'Notified'),
         (CONFIRMED, 'Confirmed'),
@@ -26,23 +28,23 @@ class Patient(models.Model):
         (VACCINATED, 'Vaccinated'),
     )
 
-    TIERONE='Tier 1'
-    TIERTWO='Tier 2'
-    TIERTHREE='Tier 3'
-    TIERFOUR='Tier 4'
-    OCCUPATION=(
-        (TIERONE, 'Tier 1'), 
+    TIERONE = 'Tier 1'
+    TIERTWO = 'Tier 2'
+    TIERTHREE = 'Tier 3'
+    TIERFOUR = 'Tier 4'
+    OCCUPATION = (
+        (TIERONE, 'Tier 1'),
         (TIERTWO, 'Tier 2'),
         (TIERTHREE, 'Tier 3'),
         (TIERFOUR, 'Tier 4'),
     )
 
-    CAR='Car'
-    PUBLICTRANSIT='Public transit'
-    WALK='Walk'
-    BIKE='Bike'
-    OTHER='Other'
-    MODE_OF_TRANSIT=(
+    CAR = 'Car'
+    PUBLICTRANSIT = 'Public transit'
+    WALK = 'Walk'
+    BIKE = 'Bike'
+    OTHER = 'Other'
+    MODE_OF_TRANSIT = (
         (CAR, 'Car'),
         (PUBLICTRANSIT, 'Public transit'),
         (WALK, 'Walk'),
@@ -50,53 +52,60 @@ class Patient(models.Model):
         (OTHER, 'Other'),
     )
     age = models.PositiveIntegerField()
-    firstName = models.CharField()
-    lastName = models.CharField()
+    firstName = models.CharField(max_length=255)
+    lastName = models.CharField(max_length=255)
     phoneNumber = models.CharField(max_length=10)
-    email = models.CharField()
-    vaccinationStatus = models.CharField(max_length=2, choices=VACCINATION_STATUS, default=NODOSE)
-    notificationStatus = models.CharField(choices=NOTIFICATION_STATUS, default=UNNOTIFIED)
-    occupation = models.CharField(choices=OCCUPATION)
-    transport = models.CharField(choices=MODE_OF_TRANSIT)
+    email = models.CharField(max_length=255)
+    vaccinationStatus = models.CharField(
+        max_length=2, choices=VACCINATION_STATUS, default=NODOSE)
+    notificationStatus = models.CharField(max_length=255,
+                                          choices=NOTIFICATION_STATUS, default=UNNOTIFIED)
+    occupation = models.CharField(max_length=255, choices=OCCUPATION)
+    transport = models.CharField(max_length=255, choices=MODE_OF_TRANSIT)
     highRiskHousehold = models.BooleanField()
-    healthcareNum = models.CharField(unique=True)
+    healthcareNum = models.CharField(max_length=255, unique=True)
 
-    #many to one
-    clinic = models.ForeignKey('Clinic')
+    # many to one
+    clinic = models.ForeignKey(
+        'Clinic',
+        on_delete=models.DO_NOTHING  # added this line bc i was getting a typeError -dina
+    )
 
     class Clinic(models.Model):
-        lat = models.float_field("latitude")
-        lon = models.float_field("longitude")
-        name = models.CharField()
-        
-        #queue of patients
-        #list of today's available appointments
-        
-        username=models.CharField()
-        password=models.CharField()
+        lat = models.FloatField("latitude")
+        lon = models.FloatField("longitude")
+        name = models.CharField(max_length=255)
 
+        # queue of patients
+        # list of today's available appointments
+
+        username = models.CharField(max_length=255)
+        password = models.CharField(max_length=255)
 
     class Appointment(models.Model):
-        OPEN='open'
-        CONFIRMED='confirmed'
-        FINISHED='finished'
-        STATUS=(
+        OPEN = 'open'
+        CONFIRMED = 'confirmed'
+        FINISHED = 'finished'
+        STATUS = (
             (OPEN, 'Open'),
             (CONFIRMED, 'Confirmed'),
             (FINISHED, 'Finished'),
         )
 
-        status=models.CharField(choices=STATUS, default=OPEN)
-        clinic=models.ForeignKey('Clinic')
-        time=models.TimeField()
-        date=models.DateField(auto_now_add=True)
+        status = models.CharField(max_length=255, choices=STATUS, default=OPEN)
+        clinic = models.ForeignKey(
+            'Clinic',
+            on_delete=models.DO_NOTHING  # had to add this line also to fix an error -d
+        )
+        time = models.TimeField()
+        date = models.DateField(auto_now_add=True)
 
 
 class Address(models.Model):
     street = models.CharField("Street Address", max_length=100)
     city = models.CharField("City", max_length=30)
-    postalCode = models.CharField("Postal Code", max_length=6) 
-    country = models.CharField("Country", max_length=3, choices=ISO_3166_CODES)
+    postalCode = models.CharField("Postal Code", max_length=6)
+    #country = models.CharField("Country", max_length=3, choices=ISO_3166_CODES)
 
     ALBERTA = 'Alberta'
     BC = 'British Columbia'
@@ -126,7 +135,7 @@ class Address(models.Model):
         (SK, 'Saskatchewan'),
         (YUKON, 'Yukon'),
     )
-    province = models.Char_field(choices=PROVINCE)
+    province = models.CharField(max_length=255, choices=PROVINCE)
 
-    lat = models.float_field("latitude")
-    lon = models.float_field("longitude")
+    lat = models.FloatField("latitude")
+    lon = models.FloatField("longitude")
