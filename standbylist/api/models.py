@@ -54,7 +54,7 @@ class Patient(models.Model):
     age = models.PositiveIntegerField()
     firstName = models.CharField(max_length=255)
     lastName = models.CharField(max_length=255)
-    phoneNumber = models.CharField(max_length=10)
+    phoneNumber = models.CharField(max_length=10, unique=True)
     email = models.CharField(max_length=255)
     vaccinationStatus = models.CharField(
         max_length=2, choices=VACCINATION_STATUS, default=NODOSE)
@@ -82,6 +82,10 @@ class Patient(models.Model):
         username = models.CharField(max_length=255)
         password = models.CharField(max_length=255)
 
+        def __str__(self):
+            return self.name
+        
+
     class Appointment(models.Model):
         OPEN = 'open'
         CONFIRMED = 'confirmed'
@@ -95,8 +99,8 @@ class Patient(models.Model):
         status = models.CharField(max_length=255, choices=STATUS, default=OPEN)
         clinic = models.ForeignKey(
             'Clinic',
-            on_delete=models.DO_NOTHING  # had to add this line also to fix an error -d
-        )
+            on_delete=models.CASCADE  # had to add this line also to fix an error -d
+        )                               #changed it to cascade i think it makes more sense
         time = models.TimeField()
         date = models.DateField(auto_now_add=True)
 
