@@ -66,7 +66,8 @@ class Patient(models.Model):
 
 
     class Clinic(models.Model):
-        #location/address @ joey
+        lat = models.float_field("latitude")
+        lon = models.float_field("longitude")
         name = models.CharField()
         #list field?
         #queue of patients
@@ -114,11 +115,7 @@ class Address(models.Model):
         (SK, 'Saskatchewan'),
         (YUKON, 'Yukon'),
     )
+    province = models.Char_field(choices=PROVINCE)
 
     lat = models.float_field("latitude")
     lon = models.float_field("longitude")
-
-
-
-
-
