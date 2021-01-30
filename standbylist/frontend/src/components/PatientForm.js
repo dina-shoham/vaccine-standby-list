@@ -44,16 +44,8 @@ export default class PatientForm extends Component {
     this.setState({ highRiskHousehold: event.target.checked });
   };
 
-  //   handleOccupation = (event) => {
-  //     this.setState({ occupation: event.target.value });
-  //   };
-
-  //   handleRiskFactors = (event) => {
-  //     this.setState({ riskFactors: event.target.value });
-  //   };
-
   handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault(); //stop it from refreshing for now so we can see the console.log
     const vaccineStatus = this.state.firstDose ? "One dose" : "No doses";
     console.log(this.state);
     const requestOptions = {
