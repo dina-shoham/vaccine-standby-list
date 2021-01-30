@@ -6,7 +6,7 @@ from .models import Appointment
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
-        fields = ('id', 'age', 'firstName', 'lastName', 'phoneNumber', 'email', 'vaccinationStatus', 'notificationStatus', 
+        fields = ('id', 'age', 'firstName', 'lastName', 'phoneNumber', 'email', 'vaccinationStatus',
             'occupation', 'transport', 'highRiskHousehold', 'healthcareNum', 'riskFactors')
 
 class ClinicSerializer(serializers.ModelSerializer):
@@ -31,5 +31,10 @@ class CreateClinicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clinic
         fields =('name', 'email', 'address', 'username', 'password', 'lat', 'lon')
+
+class CreateAppointmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Appointment
+        fields =('status', 'clinic')
 
 #will need a serializer for validating clinic logins
