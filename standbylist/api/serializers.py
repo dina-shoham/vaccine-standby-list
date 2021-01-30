@@ -22,12 +22,14 @@ class AppointmentSerializer(serializers.ModelSerializer):
 
 #create serializers
 class CreatePatientSerializer(serializers.ModelSerializer):
-    model = Patient
-    fields =('age', 'firstName', 'lastName', 'phoneNumber', 'email', 'vaccinationStatus', 
-            'occupation', 'transport', 'highRiskHousehold', 'healthcareNum', 'lat', 'lon', 'riskFactors')
+    class Meta:
+        model = Patient
+        fields =('age', 'firstName', 'lastName', 'phoneNumber', 'email', 'vaccinationStatus', 
+                'occupation', 'transport', 'highRiskHousehold', 'healthcareNum', 'lat', 'lon', 'riskFactors')
 
 class CreateClinicSerializer(serializers.ModelSerializer):
-    model = Clinic
-    fields =('name', 'email', 'address', 'username', 'password', 'lat', 'lon')
+    class Meta:
+        model = Clinic
+        fields =('name', 'email', 'address', 'username', 'password', 'lat', 'lon')
 
 #will need a serializer for validating clinic logins
