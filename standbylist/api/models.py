@@ -64,20 +64,16 @@ class Patient(models.Model):
     transport = models.CharField(max_length=255, choices=MODE_OF_TRANSIT)
     highRiskHousehold = models.BooleanField()
     healthcareNum = models.CharField(max_length=255, unique=True)
+    #joey where is the address?
 
-    # many to one
-    clinic = models.ForeignKey(
-        'Clinic',
-        on_delete=models.DO_NOTHING  # added this line bc i was getting a typeError -dina
-    )
 
 class Clinic(models.Model):
     lat = models.FloatField("latitude")
     lon = models.FloatField("longitude")
     name = models.CharField(max_length=255)
 
-        # queue of patients
-        # list of today's available appointments
+        # queue of patients will be found using get all patient by clinic in prioritization algorithm
+        # when a clinic enters an appointment, it will create a new appointment 
 
     username = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
@@ -95,7 +91,8 @@ class Appointment(models.Model):
         (CONFIRMED, 'Confirmed'),
         (FINISHED, 'Finished'),
     )
-
+    #one to one to patient
+    patient = models.OneToOneField(Patient, on_delete=models.DO_NOTHING, null=True)
     status = models.CharField(max_length=255, choices=STATUS, default=OPEN)
     clinic = models.ForeignKey(
         'Clinic',

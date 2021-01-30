@@ -7,7 +7,7 @@ class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
         fields = ('id', 'age', 'firstName', 'lastName', 'phoneNumber', 'email', 'vaccinationStatus', 'notificationStatus', 
-            'occupation', 'transport', 'highRiskHousehold', 'healthcareNum', 'clinic')
+            'occupation', 'transport', 'highRiskHousehold', 'healthcareNum')
 
 class ClinicSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,4 +17,4 @@ class ClinicSerializer(serializers.ModelSerializer):
 class AppointmentSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Appointment
-        fields = ('id', 'status', 'clinic', 'time', 'date')
+        fields = ('id', 'patient', 'status', 'clinic', 'time', 'date')
