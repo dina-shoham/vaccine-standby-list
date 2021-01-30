@@ -77,8 +77,6 @@ WSGI_APPLICATION = 'standbylist.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-
 if platform.system() == "Windows":
     DATABASES = {
         'default': {
@@ -95,15 +93,8 @@ elif platform.system() == "Darwin" or platform.system() == "Linux":
     }
 else:
     print("wtf is ur os dude???")
-    raise KeyError ("wtf is ur os dude")
+    raise KeyError("wtf is ur os dude")
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 0645f435eca22556d1a0e3a8c3b92859e98bad05
-
->>>>>>> 0645f435eca22556d1a0e3a8c3b92859e98bad05
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
