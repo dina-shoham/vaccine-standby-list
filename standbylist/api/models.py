@@ -64,7 +64,8 @@ class Patient(models.Model):
     transport = models.CharField(max_length=255, choices=MODE_OF_TRANSIT)
     highRiskHousehold = models.BooleanField()
     healthcareNum = models.CharField(max_length=255, unique=True)
-    #joey where is the address?
+    lat = models.FloatField("latitude")
+    lon = models.FloatField("longitude")
 
 
 class Clinic(models.Model):
@@ -102,41 +103,33 @@ class Appointment(models.Model):
     date = models.DateField(auto_now_add=True)
 
 
-class Address(models.Model):
-    street = models.CharField("Street Address", max_length=100)
-    city = models.CharField("City", max_length=30)
-    postalCode = models.CharField("Postal Code", max_length=6)
-    #country = models.CharField("Country", max_length=3, choices=ISO_3166_CODES)
 
-    ALBERTA = 'Alberta'
-    BC = 'British Columbia'
-    MANITOBA = 'Manitoba'
-    NB = 'New Brunswick'
-    NEWFL = 'Newfoundland and Labrador'
-    NWT = 'Northwest Territories'
-    NS = 'Nova Scotia'
-    NUNAVUT = 'Nunavut'
-    ONTARIO = 'Ontario'
-    PEI = 'Prince Edward Island'
-    QUEBEC = 'Quebec'
-    SK = 'Saskatchewan'
-    YUKON = 'Yukon'
-    PROVINCE = (
-        (ALBERTA, 'Alberta'),
-        (BC, 'British Columbia'),
-        (MANITOBA, 'Manitoba'),
-        (NB, 'New Brunswick'),
-        (NEWFL, 'Newfoundland and Labrador'),
-        (NWT, 'Northwest Territories'),
-        (NS, 'Nova Scotia'),
-        (NUNAVUT, 'Nunavut'),
-        (ONTARIO, 'Ontario'),
-        (PEI, 'Prince Edward Island'),
-        (QUEBEC, 'Quebec'),
-        (SK, 'Saskatchewan'),
-        (YUKON, 'Yukon'),
-    )
-    province = models.CharField(max_length=255, choices=PROVINCE)
-
-    lat = models.FloatField("latitude")
-    lon = models.FloatField("longitude")
+    # ALBERTA = 'Alberta'
+    # BC = 'British Columbia'
+    # MANITOBA = 'Manitoba'
+    # NB = 'New Brunswick'
+    # NEWFL = 'Newfoundland and Labrador'
+    # NWT = 'Northwest Territories'
+    # NS = 'Nova Scotia'
+    # NUNAVUT = 'Nunavut'
+    # ONTARIO = 'Ontario'
+    # PEI = 'Prince Edward Island'
+    # QUEBEC = 'Quebec'
+    # SK = 'Saskatchewan'
+    # YUKON = 'Yukon'
+    # PROVINCE = (
+    #     (ALBERTA, 'Alberta'),
+    #     (BC, 'British Columbia'),
+    #     (MANITOBA, 'Manitoba'),
+    #     (NB, 'New Brunswick'),
+    #     (NEWFL, 'Newfoundland and Labrador'),
+    #     (NWT, 'Northwest Territories'),
+    #     (NS, 'Nova Scotia'),
+    #     (NUNAVUT, 'Nunavut'),
+    #     (ONTARIO, 'Ontario'),
+    #     (PEI, 'Prince Edward Island'),
+    #     (QUEBEC, 'Quebec'),
+    #     (SK, 'Saskatchewan'),
+    #     (YUKON, 'Yukon'),
+    # )
+    # province = models.CharField(max_length=255, choices=PROVINCE)
