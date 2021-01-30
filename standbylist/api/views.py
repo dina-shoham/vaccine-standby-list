@@ -43,6 +43,7 @@ class CreatePatientView(APIView):
             healthcareNum = serializer.data.get('healthcareNum')
             lat = serializer.data.get('lat')
             lon = serializer.data.get('lon')
+            riskFactors=serializer.data.get('riskFactors')
             
             patient = Patient(age = age, 
             firstName = firstName,
@@ -55,9 +56,13 @@ class CreatePatientView(APIView):
             highRiskHousehold = highRiskHousehold,
             healthcareNum = healthcareNum,
             lat = lat,
-            lon = lon)
+            lon = lon,
+            riskFactors=riskFactors)
             patient.save()
             return Response(PatientSerializer(patient).data, status=status.HTTP_201_CREATED)
+
+class CreateClinicView(APIView):
+
 
 #class CreateAppointmentView(APIView):
 
