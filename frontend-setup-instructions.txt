@@ -7,3 +7,9 @@
 6. npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev //allows code to run in all browsers
 7. npm i react react-dom --save-dev
 8. npm install @material-ui/core //builtin components, similar to bootstrap
+9. npm install @babel/plugin-proposal-class-properties //so we can use async/await in js
+10. npm install react-router-dom //routing between pages
+11. npm install @material-ui/icons
+12. babel.config.json
+13. webpack.config.js
+14. add scripts to package.json

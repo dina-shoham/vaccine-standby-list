@@ -1,0 +1,18 @@
+html,
+body {
+  height: 100%;
+  margin: 50;
+  padding: 50;
+}
+
+#main {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
