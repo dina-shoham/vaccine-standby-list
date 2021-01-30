@@ -49,6 +49,17 @@ class Patient(models.Model):
         (BIKE, 'Bike'),
         (OTHER, 'Other'),
     )
+    age = models.PositiveIntegerField()
+    firstName = models.CharField()
+    lastName = models.CharField()
+    phoneNumber = models.CharField(max_length=10)
+    email = models.CharField()
+    vaccinationStatus = models.CharField(max_length=2, choices=VACCINATION_STATUS, default=NODOSE)
+    notificationStatus = models.CharField(choices=NOTIFICATION_STATUS, default=UNNOTIFIED)
+    occupation = models.CharField(choices=OCCUPATION)
+    transport = models.CharField(choices=MODE_OF_TRANSIT)
+    highRiskHousehold = models.BooleanField()
+    healthcareNum = models.CharField(unique=True)
 
 class Address(models.Model):
     street = models.CharField("Street Address", max_length=100)
@@ -89,18 +100,6 @@ class Address(models.Model):
     lon = models.float_field("longitude")
 
 
-age = models.PositiveIntegerField()
-firstName = models.CharField()
-lastName = models.CharField()
-phoneNumber = models.CharField(max_length=10)
-email = models.CharField()
-#how do we do home address???
-#homeAddress
-vaccinationStatus = models.CharField(max_length=2, choices=VACCINATION_STATUS, default=NODOSE)
-notificationStatus = models.CharField(choices=NOTIFICATION_STATUS, default=UNNOTIFIED)
-occupation = models.CharField(choices=OCCUPATION)
-transport = models.CharField(choices=MODE_OF_TRANSIT)
-highRiskHousehold = models.BooleanField()
-healthcareNum = models.CharField(unique=True)
+
 #can an attribute be an object we create? 
 #enum Clinic home clinic
