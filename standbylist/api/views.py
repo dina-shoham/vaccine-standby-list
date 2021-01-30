@@ -75,6 +75,7 @@ class CreateClinicView(APIView):
             self.request.session.create()
 
         serializer = self.serializer_class(data=request.data)
+
         if serializer.is_valid():
             name = serializer.data.get('name')
             email = serializer.data.get('email')
@@ -83,11 +84,18 @@ class CreateClinicView(APIView):
             password = serializer.data.get('password')
             lat = serializer.data.get('lat')
             lon = serializer.data.get('lon')
-            clinic = Clinic(name=name, email=email, address=address,
-                            username=username, password=password, lat=lat, lon=lon)
+            clinic = Clinic(
+                name=name,
+                email=email,
+                address=address,
+                username=username,
+                password=password,
+                lat=lat,
+                lon=lon
+            )
             clinic.save()
             return Response(ClinicSerializer(clinic).data, status=status.HTTP_201_CREATED)
-        return Response(PatientSerializer(clinic).data, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CreateAppointmentView(APIView):

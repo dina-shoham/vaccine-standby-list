@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PatientForm from "./PatientForm";
 import ClinicSignUp from "./ClinicSignUp";
 import ClinicLogin from "./ClinicLogin";
-import PatientCreated from "./PatientCreated";
 
 import {
   BrowserRouter as Router,
@@ -26,11 +25,6 @@ export default class HomePage extends Component {
             <div>
               <Link to="/signup">
                 <button>Patient Signup</button>
-              </Link>
-            </div>
-            <div>
-              <Link to="/patient/:patientCode" component={PatientCreated}>
-                <button>Patient Created</button>
               </Link>
             </div>
             <div>

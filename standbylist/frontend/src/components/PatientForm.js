@@ -71,7 +71,7 @@ export default class PatientForm extends Component {
     };
 
     fetch("/api/create-patient", requestOptions)
-      .then((response) => response)
+      .then((response) => response.json())
       .then((data) => console.log(data));
   };
 
