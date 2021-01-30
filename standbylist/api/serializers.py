@@ -12,7 +12,7 @@ class PatientSerializer(serializers.ModelSerializer):
 class ClinicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clinic
-        fields = ('id', 'lat', 'long', 'name', 'username', 'password')
+        fields = ('id', 'lat', 'lon', 'name', 'username', 'password')
 
 class AppointmentSerializer(serializers.ModelSerializer):
     class Meta: 
