@@ -62,7 +62,7 @@ class Patient(models.Model):
     healthcareNum = models.CharField(unique=True)
 
     #many to one
-    clinic = models.ForeignKey('Clinic')
+    clinic = models.ForeignKey(Clinic, on_delete=models.PROTECT)
 
     class Clinic(models.Model):
         lat = models.float_field("latitude")
@@ -87,7 +87,7 @@ class Patient(models.Model):
         )
 
         status=models.CharField(choices=STATUS, default=OPEN)
-        clinic=models.ForeignKey('Clinic')
+        clinic=models.ForeignKey(Clinic, on_delete=models.CASCADE)
         time=models.TimeField()
         date=models.DateField(auto_now_add=True)
 
