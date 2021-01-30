@@ -74,9 +74,9 @@ class Patient(models.Model):
 class Clinic(models.Model):
     lat = models.FloatField("latitude", null=True)
     lon = models.FloatField("longitude", null=True)
-    name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    address = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, null=True)
+    email = models.CharField(max_length=255, null=True)
+    address = models.CharField(max_length=255, null=True)
 
     # queue of patients will be found using get all patient by clinic in prioritization algorithm
     # when a clinic enters an appointment, it will create a new appointment
@@ -108,8 +108,8 @@ class Appointment(models.Model):
         on_delete=models.CASCADE  # had to add this line also to fix an error -d
     )  # changed it to cascade i think it makes more sense
     time = models.TimeField()
-    confirmationTime = models.TimeField()
-    messageSentTime = models.TimeField()
+    confirmationTime = models.TimeField(null=True)
+    messageSentTime = models.TimeField(null=True)
     date = models.DateField(auto_now_add=True)
 
     def fillAppointment():
@@ -120,13 +120,13 @@ class Appointment(models.Model):
         self.patient.save(update_fields=['notificationStatus'])
         # send alert to twilio
 
-        # on twilio recieved:
-        self.patient = p
-        self.status = 'confirmed'
-        self.confirmationTime = datetime.datetime.now()
-        self.save(update_fields=['confirmationTime', 'status'])
-        self.patient.notificationStatus = 'Confirmed'
-        self.patient.save(update_fields=['notificationStatus'])
+        # #on twilio recieved:
+        #     self.patient = p
+        #     self.status = 'confirmed'
+        #     self.confirmationTime = datetime.datetime.now()
+        #     self.save(update_fields=['confirmationTime', 'status'])
+        #     self.patient.notificationStatus = 'Confirmed'
+        #     self.patient.save(update_fields=['notificationStatus'])
 
     def finishAppointment():
         if self.patient.vaccinationStatus == '0D':
