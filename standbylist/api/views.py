@@ -32,7 +32,7 @@ class CreatePatientView(APIView):
             self.request.session.create()
 
         serializer = self.serializer_class(data=request.data)
-
+        
         if serializer.is_valid():
             age = serializer.data.get('age')
             firstName = serializer.data.get('firstName')
@@ -63,7 +63,8 @@ class CreatePatientView(APIView):
                               lon=lon)
             patient.save()
             return Response(PatientSerializer(patient).data, status=status.HTTP_201_CREATED)
-        return Response(PatientSerializer(patient).data, status=status.HTTP_400_BAD_REQUEST)
+        print(serializer.errors)
+        return Response({serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CreateClinicView(APIView):
@@ -105,3 +106,5 @@ class CreateAppointmentView(APIView):
         return Response(AppointmentSerializer(appointment).data, status=status.HTTP_400_BAD_REQUEST)
         # i think we need this to identify the clinic, might have something to do with the user thing tho
         
+class GetClinicView(APIView):
+    serializer_class = ClinicSerializer

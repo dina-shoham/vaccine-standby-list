@@ -6,7 +6,7 @@ from .models import Appointment
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
-        fields = ('id', 'age', 'firstName', 'lastName', 'phoneNumber', 'email', 'vaccinationStatus', 'notificationStatus', 
+        fields = ('id', 'age', 'firstName', 'lastName', 'phoneNumber', 'email', 'vaccinationStatus',
             'occupation', 'transport', 'highRiskHousehold', 'healthcareNum', 'riskFactors')
 
 class ClinicSerializer(serializers.ModelSerializer):

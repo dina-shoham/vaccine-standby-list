@@ -46,7 +46,7 @@ export default class PatientForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault(); //stop it from refreshing for now so we can see the console.log
-    //const vaccineStatus = this.state.firstDose ? "1D" : "0D";
+    const vaccineStatus = this.state.firstDose ? "1D" : "0D";
     console.log(this.state);
     const requestOptions = {
       method: "POST",
@@ -57,8 +57,7 @@ export default class PatientForm extends Component {
         lastName: this.state.lastName,
         phoneNumber: this.state.phoneNumber,
         email: this.state.email,
-        //vaccinationStatus: vaccineStatus,
-        //address: this.state.address,
+        vaccinationStatus: vaccineStatus,
         occupation: this.state.occupation,
         transport: this.state.transportation,
         highRiskHousehold: this.state.highRiskHousehold,
