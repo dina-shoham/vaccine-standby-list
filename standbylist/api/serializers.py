@@ -18,3 +18,10 @@ class AppointmentSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Appointment
         fields = ('id', 'patient', 'status', 'clinic', 'time', 'date')
+
+
+#create serializers
+class CreatePatientSerializer(serializers.ModelSerializer):
+    model = Patient
+    fields =('age', 'firstName', 'lastName', 'phoneNumber', 'email', 'vaccinationStatus', 
+            'occupation', 'transport', 'highRiskHousehold', 'healthcareNum', 'lat', 'lon')
