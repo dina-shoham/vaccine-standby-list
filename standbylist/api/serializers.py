@@ -32,4 +32,9 @@ class CreateClinicSerializer(serializers.ModelSerializer):
         model = Clinic
         fields =('name', 'email', 'address', 'username', 'password', 'lat', 'lon')
 
+class CreateAppointmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Appointment
+        fields =('status', 'clinic')
+
 #will need a serializer for validating clinic logins
