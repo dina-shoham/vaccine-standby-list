@@ -1,5 +1,6 @@
 from django.db import models
-#from geo.py import geodesic
+from geo.py import geodesic
+import datetime
 
 # Create your models here.
 
@@ -89,10 +90,12 @@ class Appointment(models.Model):
     OPEN = 'open'
     CONFIRMED = 'confirmed'
     FINISHED = 'finished'
+    MISSED = 'missed'
     STATUS = (
         (OPEN, 'Open'),
         (CONFIRMED, 'Confirmed'),
         (FINISHED, 'Finished'),
+        (MISSED, 'missed'),
     )
     # one to one to patient
     patient = models.OneToOneField(
@@ -103,15 +106,48 @@ class Appointment(models.Model):
         on_delete=models.CASCADE  # had to add this line also to fix an error -d
     )  # changed it to cascade i think it makes more sense
     time = models.TimeField()
+    confirmationTime = models.TimeField()
+    messageSentTime = models.TimeField()
     date = models.DateField(auto_now_add=True)
 
     def fillAppointment():
         p = findPatient(self.clinic, 15)
+        self.messageSentTime = datetime.datetime.now()
+        self.save(update_fields=['messageSentTime'])
+        self.patient.notificationStatus = 'Notified'
+        self.patient.save(update_fields=['notificationStatus'])
         #send alert to twilio
 
         #on twilio recieved:
             self.patient = p
-            #set time of appointment confirmation to current time
+            self.status = 'confirmed'
+            self.confirmationTime = datetime.datetime.now()
+            self.save(update_fields=['confirmationTime', 'status'])
+            self.patient.notificationStatus = 'Confirmed'
+            self.patient.save(update_fields=['notificationStatus'])
+
+    def finishAppointment():
+        if self.patient.vaccinationStatus == '0D':
+            self.patient.vaccinationStatus = '1D'
+        elif self.patient.vaccinationStatus == '1D':
+            self.patient.vaccinationStatus = '2D'
+        
+        self.status = "Finished"
+        self.save(update_fields=['status'])
+        self.patient.notificationStatus = 'Vaccinated'
+        self.patient.save(update_fields=['vaccinationStatus'])
+
+    def checkAppointment():
+        if status == 'open':
+            timeSinceSent = (datetime.datetime.now()-self.messageSentTime).total_seconds()
+            if timeSinceSent > 1800:
+                fillAppointment()
+
+        if status == "confirmed":
+            timeSinceAppointment = (datetime.datetime.now()-self.time).total_seconds()
+            if timeSinceAppointment > 900:
+                self.status = "Missed"
+                self.save(update_fields=['status'])
 
 
 # ALBERTA = 'Alberta'
