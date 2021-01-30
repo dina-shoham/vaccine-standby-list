@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import generics
+from .serializers import PatientSerializer
+from .models import Patient
 
 # Create your views here.
 
-
-def main(request):
-    return HttpResponse("hello")
+class PatientView(generics.CreateAPIView):
+    queryset = Patient.objects.all()
+    serializer_class=PatientSerializer
