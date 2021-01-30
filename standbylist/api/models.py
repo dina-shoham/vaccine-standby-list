@@ -105,6 +105,14 @@ class Appointment(models.Model):
     time = models.TimeField()
     date = models.DateField(auto_now_add=True)
 
+    def fillAppointment():
+        p = findPatient(self.clinic, 15)
+        #send alert to twilio
+
+        #on twilio recieved:
+            self.patient = p
+            #set time of appointment confirmation to current time
+
 
 # ALBERTA = 'Alberta'
 # BC = 'British Columbia'
@@ -138,8 +146,8 @@ class Appointment(models.Model):
 
 
 def findPatient(clinic, clinicRange):
-    patients = Patient.objects.filter(vaccinationStatus != "2D" and  # grabs list of patients who have less than 2 doses
-                                      notificationStatus == "Unnotified" and  # and who are unnotified
+    patients = Patient.objects.filter(vaccinationStatus != "2D",  # grabs list of patients who have less than 2 doses
+                                      notificationStatus == "Unnotified",  # and who are unnotified
                                       patientClinicDist(clinic.lat, clinic.lon, lat, lon) < clinicRange)  # and who are within range
 
     curPatient = patients[0]
@@ -155,7 +163,7 @@ def findPatient(clinic, clinicRange):
             tier = 4
 
         if p.highRiskHousehold == True:
-            house = 2
+            house = 1.1
         else:
             house = 1
 
