@@ -183,7 +183,12 @@ def findPatient(clinic, clinicRange):
         else:
             house = 1
 
-        risk = (p.riskFactors+1)*p.age*(5-tier)*house
+        if p.vaccinationStatus == "0D":
+            status = 1
+        elif p.vaccinationStatus == "1D":
+            status = 2.5
+
+        risk = (p.riskFactors+1)*p.age*(5-tier)*house*status
         if(curHighestRisk < risk):
             curHighestRisk = risk
             curPatient = p
