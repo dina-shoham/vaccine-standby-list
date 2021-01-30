@@ -110,7 +110,7 @@ class Appointment(models.Model):
         #send alert to twilio
 
         #on twilio recieved:
-            self.patient = p
+        self.patient = p
             #set time of appointment confirmation to current time
 
 
