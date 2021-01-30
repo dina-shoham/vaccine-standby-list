@@ -1,4 +1,5 @@
 from django.db import models
+from geo.py import patientClinicDist
 
 # Create your models here.
 
@@ -66,6 +67,7 @@ class Patient(models.Model):
     healthcareNum = models.CharField(max_length=255, unique=True)
     lat = models.FloatField("latitude")
     lon = models.FloatField("longitude")
+    riskFactors = models.models.IntegerField()
 
 
 class Clinic(models.Model):
@@ -101,6 +103,32 @@ class Appointment(models.Model):
     )  # changed it to cascade i think it makes more sense
     time = models.TimeField()
     date = models.DateField(auto_now_add=True)
+
+def newAppointment(clinic, clinicRange):
+    patients = Patient.objects.filter(vaccinationStatus != "2D" and             #grabs list of patients who have less than 2 doses
+        notificationStatus == "Unnotified" and                                  #and who are unnotified
+        patientClinicDist(clinic.lat, clinic.lon, lat, lon) < clinicRange)      #and who are within range
+    
+    curPatient = patients[0]
+    curHighestRisk = 0
+    for p in patients:
+        if p.occupation == "Tier 1":
+            tier = 1
+        elif p.occupation == "Tier 2":
+            tier = 2
+        elif p.occupation == "Tier 3":
+            tier = 3
+        elif p.occupation == "Tier 4":
+            tier = 4
+
+        if p.highRiskHousehold == True:
+            house = 2
+        else:
+            house = 1
+        risk = (p.riskFactors+1)*p.age*(5-tier)*house
+        if(curHighestRisk < p.riskFactors):
+
+
 
 
 
