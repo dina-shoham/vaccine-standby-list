@@ -1,0 +1,9 @@
+1. install npm
+	type npm in a terminal
+2. django-admin startapp frontend (inside musiccontroller)
+3. set up directories
+4. npm init -y
+5. npm i webpack webpack-cli //lumps everything into one js file
+6. npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev //allows code to run in all browsers
+7. npm i react react-dom --save-dev
+8. npm install @material-ui/core //builtin components, similar to bootstrap
