@@ -71,38 +71,38 @@ class Patient(models.Model):
         on_delete=models.DO_NOTHING  # added this line bc i was getting a typeError -dina
     )
 
-    class Clinic(models.Model):
-        lat = models.FloatField("latitude")
-        lon = models.FloatField("longitude")
-        name = models.CharField(max_length=255)
+class Clinic(models.Model):
+    lat = models.FloatField("latitude")
+    lon = models.FloatField("longitude")
+    name = models.CharField(max_length=255)
 
         # queue of patients
         # list of today's available appointments
 
-        username = models.CharField(max_length=255)
-        password = models.CharField(max_length=255)
+    username = models.CharField(max_length=255)
+    password = models.CharField(max_length=255)
 
-        def __str__(self):
-            return self.name
+    def __str__(self):
+        return self.name
         
 
-    class Appointment(models.Model):
-        OPEN = 'open'
-        CONFIRMED = 'confirmed'
-        FINISHED = 'finished'
-        STATUS = (
-            (OPEN, 'Open'),
-            (CONFIRMED, 'Confirmed'),
-            (FINISHED, 'Finished'),
-        )
+class Appointment(models.Model):
+    OPEN = 'open'
+    CONFIRMED = 'confirmed'
+    FINISHED = 'finished'
+    STATUS = (
+        (OPEN, 'Open'),
+        (CONFIRMED, 'Confirmed'),
+        (FINISHED, 'Finished'),
+    )
 
-        status = models.CharField(max_length=255, choices=STATUS, default=OPEN)
-        clinic = models.ForeignKey(
-            'Clinic',
-            on_delete=models.CASCADE  # had to add this line also to fix an error -d
-        )                               #changed it to cascade i think it makes more sense
-        time = models.TimeField()
-        date = models.DateField(auto_now_add=True)
+    status = models.CharField(max_length=255, choices=STATUS, default=OPEN)
+    clinic = models.ForeignKey(
+        'Clinic',
+        on_delete=models.CASCADE  # had to add this line also to fix an error -d
+    )  # changed it to cascade i think it makes more sense
+    time = models.TimeField()
+    date = models.DateField(auto_now_add=True)
 
 
 class Address(models.Model):
