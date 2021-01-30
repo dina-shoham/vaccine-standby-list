@@ -21,6 +21,21 @@ export default class HomePage extends Component {
         <Switch>
           <Route exact path="/">
             <p>HOMEPAGE</p>
+            <div>
+              <Link to="/signup">
+                <button>Patient Signup</button>
+              </Link>
+            </div>
+            <div>
+              <Link to="/clinic/signup">
+                <button>Clinic Signup</button>
+              </Link>
+            </div>
+            <div>
+              <Link to="/clinic/login">
+                <button>Clinic Login</button>
+              </Link>
+            </div>
           </Route>
           <Route path="/signup" component={PatientForm}></Route>
           <Route path="/clinic/signup" component={ClinicSignUp}></Route>

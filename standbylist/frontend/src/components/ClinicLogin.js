@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class ClinicLogin extends Component {
   constructor(props) {
@@ -6,6 +7,15 @@ export default class ClinicLogin extends Component {
   }
 
   render() {
-    return <p>clinic login</p>;
+    return (
+      <div>
+        <div>
+          <Link to="/">
+            <button>Back to homepage</button>
+          </Link>
+        </div>
+        <p>clinic login</p>;
+      </div>
+    );
   }
 }

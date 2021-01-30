@@ -20,7 +20,18 @@ export default class PatientForm extends Component {
     occupation: "",
     riskFactors: "",
     highRiskHousehold: false,
+    latitude: "",
+    longitude: "",
   };
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      this.setState({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+    });
+  }
 
   handleChange = (event, fieldName) => {
     this.setState({ [fieldName]: event.target.value });
@@ -51,14 +62,39 @@ export default class PatientForm extends Component {
   };
 
   handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(this.state);
+    // event.preventDefault();
+    // console.log(this.state);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        age: this.state.age,
+        phoneNumber: this.state.phoneNumber,
+        healthCareNumber: this.state.healthCareNumber,
+        address: this.state.address,
+        transportation: this.state.transportation,
+        firstDose: this.state.firstDose,
+        occupation: this.state.occupation,
+        riskFactors: this.state.riskFactors,
+        highRiskHousehold: this.state.highRiskHousehold,
+        latitude: this.state.latitude,
+        longitude: this.state.longitude,
+      }),
+    };
   };
 
   render() {
     return (
       <div>
         <h1>Covid Vaccination Waitlist: Patient Signup</h1>
+        <div>
+          <Link to="/">
+            <button>Back to homepage</button>
+          </Link>
+        </div>
         <form onSubmit={this.handleSubmit}>
           <h3>Personal Information</h3>
           <div class="personal-info">
