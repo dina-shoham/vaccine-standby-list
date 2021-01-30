@@ -5,85 +5,80 @@ import { Link } from "react-router-dom";
 export default class PatientForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      age: "",
+      phoneNumber: "",
+      healthCareNumber: "",
+      address: "",
+      transportation: "",
+      firstDose: false,
+      occupation: "",
+      riskFactors: "",
+      highRiskHousehold: false,
+      latitude: "",
+      longitude: "",
+    };
   }
 
-  state = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    age: "",
-    phoneNumber: "",
-    healthCareNumber: "",
-    address: "",
-    transportation: "",
-    firstDose: false,
-    occupation: "",
-    riskFactors: "",
-    highRiskHousehold: false,
-    latitude: "",
-    longitude: "",
-  };
-
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(function (position) {
+    navigator.geolocation.getCurrentPosition((position) =>
       this.setState({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
-      });
-    });
+      })
+    );
   }
 
   handleChange = (event, fieldName) => {
     this.setState({ [fieldName]: event.target.value });
   };
 
-  handleCheck = (event) => {
+  handleFirstDose = (event) => {
     this.setState({ firstDose: event.target.checked });
-  };
-
-  handleAge = (event) => {
-    this.setState({ age: event.target.value });
-  };
-
-  handleTransportation = (event) => {
-    this.setState({ transportation: event.target.checked });
   };
 
   handleCheckHousehold = (event) => {
     this.setState({ highRiskHousehold: event.target.checked });
   };
 
-  handleOccupation = (event) => {
-    this.setState({ occupation: event.target.value });
-  };
+  //   handleOccupation = (event) => {
+  //     this.setState({ occupation: event.target.value });
+  //   };
 
-  handleRiskFactors = (event) => {
-    this.setState({ riskFactors: event.target.value });
-  };
+  //   handleRiskFactors = (event) => {
+  //     this.setState({ riskFactors: event.target.value });
+  //   };
 
   handleSubmit = (event) => {
-    // event.preventDefault();
-    // console.log(this.state);
+    event.preventDefault();
+    const vaccineStatus = this.state.firstDose ? "One dose" : "No doses";
+    console.log(this.state);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        age: this.state.age,
         firstName: this.state.firstName,
         lastName: this.state.lastName,
-        email: this.state.email,
-        age: this.state.age,
         phoneNumber: this.state.phoneNumber,
-        healthCareNumber: this.state.healthCareNumber,
+        email: this.state.email,
+        vaccinationStatus: vaccineStatus,
         address: this.state.address,
-        transportation: this.state.transportation,
-        firstDose: this.state.firstDose,
         occupation: this.state.occupation,
-        riskFactors: this.state.riskFactors,
+        transport: this.state.transportation,
         highRiskHousehold: this.state.highRiskHousehold,
-        latitude: this.state.latitude,
-        longitude: this.state.longitude,
+        healthcareNum: this.state.healthCareNumber,
+        riskFactors: this.state.riskFactors,
+        lat: this.state.latitude,
+        lon: this.state.longitude,
       }),
     };
+    fetch("/api/patient", requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   };
 
   render() {
@@ -126,7 +121,7 @@ export default class PatientForm extends Component {
               type="number"
               max="125"
               min="18"
-              onChange={this.handleAge}
+              onChange={(event) => this.handleChange(event, "age")}
             />
             <br></br>
             <label for="phoneNumber">Phone Number: </label>
@@ -143,7 +138,6 @@ export default class PatientForm extends Component {
             <input
               id="healthCareNumber"
               value={this.state.healthCareNumber}
-              type="number"
               onChange={(event) => this.handleChange(event, "healthCareNumber")}
             />
             <div class="address">
@@ -160,14 +154,14 @@ export default class PatientForm extends Component {
               <select
                 id="transportation"
                 value={this.state.transportation}
-                onChange={this.handleTransportation}
+                onChange={(event) => this.handleChange(event, "transportation")}
               >
                 <option default></option>
-                <option value="car">Car</option>
-                <option value="publicTransit">Public Transit</option>
-                <option value="walk">Walking</option>
-                <option value="bike">Biking</option>
-                <option value="other">Other</option>
+                <option value="Car">Car</option>
+                <option value="Public transit">Public Transit</option>
+                <option value="Walk">Walking</option>
+                <option value="Bike">Biking</option>
+                <option value="Other">Other</option>
               </select>
             </div>
             <h3>Covid Risk Information</h3>
@@ -178,8 +172,8 @@ export default class PatientForm extends Component {
             <input
               id="firstDose"
               type="checkbox"
-              value={this.state.firstDose}
-              onCheck={this.handleCheck}
+              checked={this.state.firstDose}
+              onChange={this.handleFirstDose}
             />
             <br></br>
             <label for="occupation">
@@ -196,13 +190,13 @@ export default class PatientForm extends Component {
             <select
               id="occupation"
               value={this.state.occupation}
-              onChange={this.handleOccupation}
+              onChange={(event) => this.handleChange(event, "occupation")}
             >
               <option default></option>
-              <option value="tierOne">Tier One</option>
-              <option value="tierTwo">Tier Two</option>
-              <option value="tierThree">Tier Three</option>
-              <option value="none">None of the above</option>
+              <option value="Tier 1">Tier One</option>
+              <option value="Tier 2">Tier Two</option>
+              <option value="Tier 3">Tier Three</option>
+              <option value="Tier 4">None of the above</option>
             </select>
             <br></br>
             <label for="riskFactors">
@@ -226,11 +220,11 @@ export default class PatientForm extends Component {
             </label>
             <input
               id="riskFactors"
-              value={this.state.age}
+              value={this.state.riskFactors}
               type="number"
-              //   max="8"
-              //   min="0"
-              onChange={this.handleRiskFactors}
+              max="8"
+              min="0"
+              onChange={(event) => this.handleChange(event, "riskFactors")}
             />
             <br></br>
             <label for="highRiskHousehold">
@@ -240,8 +234,8 @@ export default class PatientForm extends Component {
             <input
               id="highRiskHousehold"
               type="checkbox"
-              value={this.state.highRiskHousehold}
-              onCheck={this.handleCheckHousehold}
+              checked={this.state.highRiskHousehold}
+              onChange={this.handleCheckHousehold}
             />
           </div>
           <button type="submit">Sign me up!</button>
