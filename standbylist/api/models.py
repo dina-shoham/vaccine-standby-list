@@ -67,7 +67,7 @@ class Patient(models.Model):
     healthcareNum = models.CharField(max_length=255, unique=True)
     lat = models.FloatField("latitude", null=True)
     lon = models.FloatField("longitude", null=True)
-    riskFactors = models.IntegerField(null=True)
+    riskFactors = models.IntegerField(default=0)
 
 
 class Clinic(models.Model):
@@ -176,34 +176,3 @@ def patientClinicDist(patientLat, patientLon, clinicLat, clinicLon):
     patient = (patientLat, patientLon)
     clinic = (clinicLat, clinicLon)
     return (geodesic(patient, clinic).km)
-
-
-# ALBERTA = 'Alberta'
-# BC = 'British Columbia'
-# MANITOBA = 'Manitoba'
-# NB = 'New Brunswick'
-# NEWFL = 'Newfoundland and Labrador'
-# NWT = 'Northwest Territories'
-# NS = 'Nova Scotia'
-# NUNAVUT = 'Nunavut'
-# ONTARIO = 'Ontario'
-# PEI = 'Prince Edward Island'
-# QUEBEC = 'Quebec'
-# SK = 'Saskatchewan'
-# YUKON = 'Yukon'
-# PROVINCE = (
-#     (ALBERTA, 'Alberta'),
-#     (BC, 'British Columbia'),
-#     (MANITOBA, 'Manitoba'),
-#     (NB, 'New Brunswick'),
-#     (NEWFL, 'Newfoundland and Labrador'),
-#     (NWT, 'Northwest Territories'),
-#     (NS, 'Nova Scotia'),
-#     (NUNAVUT, 'Nunavut'),
-#     (ONTARIO, 'Ontario'),
-#     (PEI, 'Prince Edward Island'),
-#     (QUEBEC, 'Quebec'),
-#     (SK, 'Saskatchewan'),
-#     (YUKON, 'Yukon'),
-# )
-# province = models.CharField(max_length=255, choices=PROVINCE)
