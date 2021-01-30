@@ -61,14 +61,13 @@ class Patient(models.Model):
     highRiskHousehold = models.BooleanField()
     healthcareNum = models.CharField(unique=True)
 
-    #can an attribute be an object we create? 
-    #enum Clinic home clinic
-
+    #many to one
+    clinic = models.ForeignKey('Clinic')
 
     class Clinic(models.Model):
         #location/address @ joey
         name = models.CharField()
-        #list field?
+        
         #queue of patients
         #list of today's available appointments
         
@@ -77,6 +76,18 @@ class Patient(models.Model):
 
 
     class Appointment(models.Model):
+        OPEN='open'
+        CONFIRMED='confirmed'
+        FINISHED='finished'
+        STATUS=(
+            (OPEN, 'Open'),
+            (CONFIRMED, 'Confirmed'),
+            (FINISHED, 'Finished'),
+        )
+
+        status=models.CharField(choices=STATUS, default=OPEN)
+        clinic=models.ForeignKey('Clinic')
+        time=models.TimeField()
         date=models.DateField(auto_now_add=True)
 
 
