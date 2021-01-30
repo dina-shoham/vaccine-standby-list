@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics, status
-from .serializers import PatientSerializer, ClinicSerializer, AppointmentSerializer, CreatePatientSerializer
+from .serializers import PatientSerializer, ClinicSerializer, AppointmentSerializer, CreatePatientSerializer, CreateClinicSerializer
 from .models import Patient, Clinic, Appointment
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -63,10 +63,34 @@ class CreatePatientView(APIView):
                               riskFactors=riskFactors)
             patient.save()
             return Response(PatientSerializer(patient).data, status=status.HTTP_201_CREATED)
+<<<<<<< HEAD
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 
 # class CreateClinicView(APIView):
+=======
+        return Response(PatientSerializer(patient).data, status=status.HTTP_400_BAD_REQUEST)
 
+class CreateClinicView(APIView):
+    serializer_class = CreateClinicSerializer
+    
+    def post(self, request, format=None):
+        if not self.request.session.exists(self.request.session.session_key):
+            self.request.session.create()
+        
+        serializer=self.serializer_class(data=request.data) 
+        if serializer.is_valid():
+            name = serializer.data.get('name')
+            email = serializer.data.get('email')
+            address = serializer.data.get('address')
+            username = serializer.data.get('username')
+            password = serializer.data.get('password')
+            lat= serializer.data.get('lat')
+            lon = serializer.data.get('lon')
+>>>>>>> 0486cbe43330754b1d51edf2cb9bd627fe20c890
+
+            clinic = Clinic(name=name, email=email, address=address, username=username, password=password, lat=lat, lon=lon)
+            clinic.save()
+            return Response(ClinicSerializer(clinic).data, status=status.HTTP_201_CREATED)
 
 # class CreateAppointmentView(APIView):
 
