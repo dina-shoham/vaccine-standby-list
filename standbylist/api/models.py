@@ -64,13 +64,13 @@ class Patient(models.Model):
     transport = models.CharField(max_length=255, choices=MODE_OF_TRANSIT)
     highRiskHousehold = models.BooleanField()
     healthcareNum = models.CharField(max_length=255, unique=True)
-    lat = models.FloatField("latitude")
-    lon = models.FloatField("longitude")
+    lat = models.FloatField("latitude", null=True)
+    lon = models.FloatField("longitude", null=True)
 
 
 class Clinic(models.Model):
-    lat = models.FloatField("latitude")
-    lon = models.FloatField("longitude")
+    lat = models.FloatField("latitude", null=True)
+    lon = models.FloatField("longitude", null=True)
     name = models.CharField(max_length=255)
 
         # queue of patients will be found using get all patient by clinic in prioritization algorithm
