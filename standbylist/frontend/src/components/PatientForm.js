@@ -69,7 +69,7 @@ export default class PatientForm extends Component {
         lon: this.state.longitude,
       }),
     };
-    fetch("/api/patient", requestOptions)
+    fetch("/api/create-patient", requestOptions)
       .then((response) => response.json())
       .then((data) => console.log(data));
   };

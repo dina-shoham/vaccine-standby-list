@@ -1,5 +1,5 @@
 from django.db import models
-from geo.py import geodesic
+#from geo.py import geodesic
 
 # Create your models here.
 
@@ -67,7 +67,7 @@ class Patient(models.Model):
     healthcareNum = models.CharField(max_length=255, unique=True)
     lat = models.FloatField("latitude", null=True)
     lon = models.FloatField("longitude", null=True)
-    riskFactors = models.IntegerField()
+    riskFactors = models.IntegerField(null=True)
 
 
 class Clinic(models.Model):
