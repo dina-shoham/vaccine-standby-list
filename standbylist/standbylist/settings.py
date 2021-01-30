@@ -98,7 +98,10 @@ else:
     raise KeyError ("wtf is ur os dude")
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 0645f435eca22556d1a0e3a8c3b92859e98bad05
 
 >>>>>>> 0645f435eca22556d1a0e3a8c3b92859e98bad05
 # Password validation
