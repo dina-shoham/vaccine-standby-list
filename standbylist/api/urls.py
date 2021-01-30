@@ -1,6 +1,10 @@
 from django.urls import path
-from .views import main
+from .views import PatientView
+from .views import ClinicView
+from .views import AppointmentView
 
 urlpatterns = [
-    path('', main)
+    path('patient', PatientView.as_view()),
+    path('clinic', ClinicView.as_view()),
+    path('appointment', AppointmentView.as_view())
 ]
