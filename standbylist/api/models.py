@@ -1,5 +1,5 @@
 from django.db import models
-from geo.py import geodesic
+from geopy.distance import geodesic
 import datetime
 
 # Create your models here.
@@ -106,8 +106,8 @@ class Appointment(models.Model):
         on_delete=models.CASCADE  # had to add this line also to fix an error -d
     )  # changed it to cascade i think it makes more sense
     time = models.TimeField()
-    confirmationTime = models.TimeField()
-    messageSentTime = models.TimeField()
+    confirmationTime = models.TimeField(null=True)
+    messageSentTime = models.TimeField(null=True)
     date = models.DateField(auto_now_add=True)
 
     def fillAppointment():
@@ -118,13 +118,13 @@ class Appointment(models.Model):
         self.patient.save(update_fields=['notificationStatus'])
         #send alert to twilio
 
-        #on twilio recieved:
-            self.patient = p
-            self.status = 'confirmed'
-            self.confirmationTime = datetime.datetime.now()
-            self.save(update_fields=['confirmationTime', 'status'])
-            self.patient.notificationStatus = 'Confirmed'
-            self.patient.save(update_fields=['notificationStatus'])
+        # #on twilio recieved:
+        #     self.patient = p
+        #     self.status = 'confirmed'
+        #     self.confirmationTime = datetime.datetime.now()
+        #     self.save(update_fields=['confirmationTime', 'status'])
+        #     self.patient.notificationStatus = 'Confirmed'
+        #     self.patient.save(update_fields=['notificationStatus'])
 
     def finishAppointment():
         if self.patient.vaccinationStatus == '0D':
