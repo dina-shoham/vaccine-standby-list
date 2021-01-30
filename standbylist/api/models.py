@@ -60,6 +60,8 @@ class Patient(models.Model):
     transport = models.CharField(choices=MODE_OF_TRANSIT)
     highRiskHousehold = models.BooleanField()
     healthcareNum = models.CharField(unique=True)
+    address = models.models.OneToOneField(Address, on_delete=models.CASCADE)
+
 
     #many to one
     clinic = models.ForeignKey(Clinic, on_delete=models.PROTECT)
