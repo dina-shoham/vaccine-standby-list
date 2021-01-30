@@ -73,15 +73,15 @@ class Clinic(models.Model):
     lon = models.FloatField("longitude")
     name = models.CharField(max_length=255)
 
-        # queue of patients will be found using get all patient by clinic in prioritization algorithm
-        # when a clinic enters an appointment, it will create a new appointment 
+    # queue of patients will be found using get all patient by clinic in prioritization algorithm
+    # when a clinic enters an appointment, it will create a new appointment
 
     username = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
-        
+
 
 class Appointment(models.Model):
     OPEN = 'open'
@@ -92,8 +92,9 @@ class Appointment(models.Model):
         (CONFIRMED, 'Confirmed'),
         (FINISHED, 'Finished'),
     )
-    #one to one to patient
-    patient = models.OneToOneField(Patient, on_delete=models.DO_NOTHING, null=True)
+    # one to one to patient
+    patient = models.OneToOneField(
+        Patient, on_delete=models.DO_NOTHING, null=True)
     status = models.CharField(max_length=255, choices=STATUS, default=OPEN)
     clinic = models.ForeignKey(
         'Clinic',
@@ -101,8 +102,6 @@ class Appointment(models.Model):
     )  # changed it to cascade i think it makes more sense
     time = models.TimeField()
     date = models.DateField(auto_now_add=True)
-
-
 
     # ALBERTA = 'Alberta'
     # BC = 'British Columbia'
