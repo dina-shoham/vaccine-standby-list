@@ -10,7 +10,7 @@ api.models.Appointment.objects.all().delete()
 q= p.filter(id=1)[0]
 
 p1 = api.models.Patient(id =1, age = 80, firstName = "Harold", lastName = "Smith", 
-             phoneNumber = "4039729857", email = "harold@mail.tv", 
+             phoneNumber = "6475294998", email = "harold@mail.tv", 
              occupation = 'Tier 3', transport = 'Car', highRiskHousehold = True, 
              healthcareNum = "20357819854", lat = 20.15, lon = 23.13, riskFactors = 3, vaccinationStatus = '2D')
 p1.save()

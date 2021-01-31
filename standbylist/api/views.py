@@ -160,9 +160,14 @@ class GetAppointment(APIView):
 class Reply(APIView):    
     def reply(request):
         request_body = request.POST.get('Body')
+        from_number = request.POST.get('From', '')
+
+        p = api.models.Patient.objects.filter(phoneNumber=from_number)
+        a = api.models.Appointment.objects.filter(patient=p)
         if request_body =='YES':
-            
+            a.confirmAppointment()
         if request_body =='NO':
+            a.cancelAppointment()
 
         return HttpResponse(str(response))
 
