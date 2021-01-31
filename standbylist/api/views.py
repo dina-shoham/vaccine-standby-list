@@ -132,6 +132,7 @@ class CreateAppointmentView(APIView):
             # clinic = self.request.session.session_key
             appointment = Appointment(time=time, clinic=clinic)
             appointment.save()
+            appointment.fillAppointment()
             return Response(AppointmentSerializer(appointment).data, status=status.HTTP_201_CREATED)
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
         # i think we need this to identify the clinic, might have something to do with the user thing tho
@@ -170,5 +171,4 @@ class Reply(APIView):
             a.cancelAppointment()
 
         return HttpResponse(str(response))
-
 
