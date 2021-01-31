@@ -103,9 +103,9 @@ class CreateClinicView(APIView):
 class CreateAppointmentView(APIView):
     serializer_class = CreateAppointmentSerializer
 
-    #new stuff
-    authentication_classes=[TokenAuthentication, ]
-    permission_classes=[IsAuthenticated, ]
+    # new stuff
+    authentication_classes = [TokenAuthentication, ]
+    permission_classes = [IsAuthenticated, ]
 
     def post(self, request, format=None):
         if not self.request.session.exists(self.request.session.session_key):
@@ -121,3 +121,6 @@ class CreateAppointmentView(APIView):
         return Response(AppointmentSerializer(appointment).data, status=status.HTTP_400_BAD_REQUEST)
         # i think we need this to identify the clinic, might have something to do with the user thing tho
 
+
+class LoginClinicView(APIView):
+    serializer_class = CreateAppointmentSerializer
