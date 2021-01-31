@@ -1,10 +1,50 @@
 from django.db import models
 from geopy.distance import geodesic
-# from celery.schedules import crontab
-# from celery.task import periodic_task
+from celery.schedules import crontab
+from celery.task import periodic_task
 import datetime
 
 # Create your models here.
+
+def findPatient(clinic, clinicRange):
+    patients = Patient.objects.filter(vaccinationStatus != "2D",  # grabs list of patients who have less than 2 doses
+                                      notificationStatus == "Unnotified",  # and who are unnotified
+                                      patientClinicDist(clinic.lat, clinic.lon, lat, lon) < clinicRange)  # and who are within range
+
+    curPatient = patients[0]
+    curHighestRisk = 0
+    for p in patients:
+        if p.occupation == "Tier 1":
+            tier = 1
+        elif p.occupation == "Tier 2":
+            tier = 2
+        elif p.occupation == "Tier 3":
+            tier = 3
+        elif p.occupation == "Tier 4":
+            tier = 4
+
+        if p.highRiskHousehold == True:
+            house = 1.1
+        else:
+            house = 1
+
+        if p.vaccinationStatus == "0D":
+            status = 1
+        elif p.vaccinationStatus == "1D":
+            status = 2.5
+
+        risk = (p.riskFactors+1)*p.age*(5-tier)*house*status
+        if(curHighestRisk < risk):
+            curHighestRisk = risk
+            curPatient = p
+
+    return curPatient
+
+
+def patientClinicDist(patientLat, patientLon, clinicLat, clinicLon):
+    patient = (patientLat, patientLon)
+    clinic = (clinicLat, clinicLon)
+    return (geodesic(patient, clinic).km)
 
 
 class Patient(models.Model):
@@ -114,23 +154,23 @@ class Appointment(models.Model):
     messageSentTime = models.TimeField(null=True)
     date = models.DateField(auto_now_add=True)
 
-    def fillAppointment():
+    def fillAppointment(self): #STILL NEEDS TO BE CALLED
         p = findPatient(self.clinic, 15)
+        self.patient = p
         self.messageSentTime = datetime.datetime.now()
-        self.save(update_fields=['messageSentTime'])
+        self.save(update_fields=['messageSentTime','patient'])
         self.patient.notificationStatus = 'Notified'
         self.patient.save(update_fields=['notificationStatus'])
         # TO ADD send alert to twilio
 
-        # #TO ADD on twilio recieved:
-        #     self.patient = p
-        #     self.status = 'confirmed'
-        #     self.confirmationTime = datetime.datetime.now()
-        #     self.save(update_fields=['confirmationTime', 'status'])
-        #     self.patient.notificationStatus = 'Confirmed'
-        #     self.patient.save(update_fields=['notificationStatus'])
+    def confirmAppointment(self):  #STILL NEEDS TO BE CALLED
+        self.status = 'confirmed'
+        self.confirmationTime = datetime.datetime.now()
+        self.save(update_fields=['confirmationTime', 'status'])
+        self.patient.notificationStatus = 'Confirmed'
+        self.patient.save(update_fields=['notificationStatus'])
 
-    def finishAppointment():
+    def finishAppointment(self): #STILL NEEDS TO BE CALLED
         if self.patient.vaccinationStatus == '0D':
             self.patient.vaccinationStatus = '1D'
         elif self.patient.vaccinationStatus == '1D':
@@ -141,7 +181,7 @@ class Appointment(models.Model):
         self.patient.notificationStatus = 'Vaccinated'
         self.patient.save(update_fields=['vaccinationStatus'])
 
-    def checkAppointment():
+    def checkAppointment(self):
         if status == 'open':  # if theyve gotten the msg but havent responded in 30mins
             timeSinceSent = (datetime.datetime.now() -
                              self.messageSentTime).total_seconds()
@@ -157,60 +197,18 @@ class Appointment(models.Model):
                 self.save(update_fields=['status'])
 
 
-def findPatient(clinic, clinicRange):
-    patients = Patient.objects.filter(vaccinationStatus != "2D",  # grabs list of patients who have less than 2 doses
-                                      notificationStatus == "Unnotified",  # and who are unnotified
-                                      patientClinicDist(clinic.lat, clinic.lon, lat, lon) < clinicRange)  # and who are within range
-
-    curPatient = patients[0]
-    curHighestRisk = 0
-    for p in patients:
-        if p.occupation == "Tier 1":
-            tier = 1
-        elif p.occupation == "Tier 2":
-            tier = 2
-        elif p.occupation == "Tier 3":
-            tier = 3
-        elif p.occupation == "Tier 4":
-            tier = 4
-
-        if p.highRiskHousehold == True:
-            house = 1.1
-        else:
-            house = 1
-
-        if p.vaccinationStatus == "0D":
-            status = 1
-        elif p.vaccinationStatus == "1D":
-            status = 2.5
-
-        risk = (p.riskFactors+1)*p.age*(5-tier)*house*status
-        if(curHighestRisk < risk):
-            curHighestRisk = risk
-            curPatient = p
-
-    return curPatient
-
-
-def patientClinicDist(patientLat, patientLon, clinicLat, clinicLon):
-    patient = (patientLat, patientLon)
-    clinic = (clinicLat, clinicLon)
-    return (geodesic(patient, clinic).km)
-
-
 # Daily reset of appointments
-# @periodic_task(run_every=crontab(hour=4, minute=20))
-# def dailyReset():
-#     patients = Patient.objects.all()
-#     for p in patients:
-#         p.notificationStatus = 'Unnotified'
-#         p.save(update_fields=['notificationStatus'])
-#         # remove all appointments
+@periodic_task(run_every=crontab(hour=4, minute=20))
+def dailyReset():
+    patients = Patient.objects.all()
+    for p in patients:
+        p.notificationStatus = 'Unnotified'
+        p.save(update_fields=['notificationStatus'])
+        # remove all appointments
 
-
-# # every 10 mins, updates all appointment statuses
-# @periodic_task(run_every=crontab(minute='*/10'))
-# def updateAppointments():
-#     appointments = Appointment.objects.all()
-#     for a in appointments:
-#         a.checkAppointment()
+# every 10 mins, updates all appointment statuses
+@periodic_task(run_every=crontab(minute='*/10'))
+def updateAppointments():
+    appointments = Appointment.objects.all()
+    for a in appointments:
+        a.checkAppointment()
