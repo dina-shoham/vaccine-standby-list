@@ -7,6 +7,9 @@ from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from datetime import date
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from twilio.twiml.messaging_response import MessagingResponse
 
 # Create your views here.
 
@@ -127,7 +130,6 @@ class LoginClinicView(APIView):
     serializer_class = CreateAppointmentSerializer
 
 
-
 class GetAppointment(APIView):
     serializer_class = AppointmentSerializer
     lookup_url_kwarg = 'clinic'
@@ -141,4 +143,15 @@ class GetAppointment(APIView):
                 for i in range(len(appointment)):
                     data.append(AppointmentSerializer(appointment[i]).data)
                 return data
-    
+@csrf_exempt
+class Reply(APIView):    
+    def reply(request):
+        request_body = request.POST.get('Body')
+        if request_body =='YES':
+            
+        if request_body =='NO':
+
+        return HttpResponse(str(response))
+
+
+
