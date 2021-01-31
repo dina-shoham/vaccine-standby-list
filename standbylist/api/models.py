@@ -3,6 +3,7 @@ from geopy.distance import geodesic
 from celery.schedules import crontab
 from celery.task import periodic_task
 import datetime
+from twilio.rest import Client
 
 # Create your models here.
 
@@ -162,7 +163,11 @@ class Appointment(models.Model):
         self.save(update_fields=['messageSentTime','patient'])
         self.patient.notificationStatus = 'Notified'
         self.patient.save(update_fields=['notificationStatus'])
+        
         # TO ADD send alert to twilio
+        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+        message = "Can you make it to a vaccination appointment today at " + self.time + "? Reply YES or NO"
+        sent = client.messages.create(body=message, to='+1'+self.patient.phoneNumber, from_='+12159774582')
 
     def confirmAppointment(self):  #STILL NEEDS TO BE CALLED
         self.status = 'confirmed'
