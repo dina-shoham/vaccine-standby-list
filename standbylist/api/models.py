@@ -72,6 +72,11 @@ class Patient(models.Model):
     lon = models.FloatField("longitude", null=True)
     riskFactors = models.IntegerField(default=0)
 
+    def patientClinicDist(self, clinicLat, clinicLon):
+        patient = (self.lat, self.lon)
+        clinic = (clinicLat, clinicLon)
+        return (geodesic(patient, clinic).km)
+
 
 class Clinic(models.Model):
     lat = models.FloatField("latitude", null=True)
@@ -122,7 +127,7 @@ class Appointment(models.Model):
         self.save(update_fields=['messageSentTime','patient'])
         p.notificationStatus = 'Notified'
         p.save(update_fields=['notificationStatus'])
-        # TO ADD send alert to twilio
+        # send alert to twilio
         client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
         message = "Can you make it to a vaccination appointment today at " + self.time + "? Reply YES or NO"
         sent = client.messages.create(body=message, to='+1'+self.patient.phoneNumber, from_='+12159774582')
@@ -160,14 +165,13 @@ class Appointment(models.Model):
                 self.status = "Missed"
                 self.save(update_fields=['status'])
     
-    def findPatient(self):
-        patients = Patient.objects.filter(notificationStatus = "Unnotified")  # grabs list of patients who have less than 2 doses
-                                       # Patient.vaccinationStatus != "2D",  # and who are unnotified
-                                        #patientClinicDist(self.clinic.lat, self.clinic.lon, lat, lon) < 15)  # and who are within range
-
+    def findPatient(self):# grabs list of patients who have less than 2 doses, who are unnotified, and who are within range
+        patients = Patient.objects.filter(notificationStatus = "Unnotified").exclude(vaccinationStatus = "2D")
+        
         curPatient = patients[0]
         curHighestRisk = 0
         for p in patients:
+            dist = p.patientClinicDist(self.clinic.lat, self.clinic.lon)
             if p.occupation == "Tier 1":
                 tier = 1
             elif p.occupation == "Tier 2":
@@ -187,7 +191,8 @@ class Appointment(models.Model):
             elif p.vaccinationStatus == "1D":
                 status = 2.5
 
-            risk = (p.riskFactors+1)*p.age*(5-tier)*house*status
+            risk = (p.riskFactors+1)*p.age*(5-tier)*house*status*(1/dist)
+            print("Patient: " + p.firstName + f" Risk: {risk}")
             if(curHighestRisk < risk):
                 curHighestRisk = risk
                 curPatient = p
@@ -209,9 +214,3 @@ def updateAppointments():
     appointments = Appointment.objects.all()
     for a in appointments:
         a.checkAppointment()
-
-
-def patientClinicDist(patientLat, patientLon, clinicLat, clinicLon):
-    patient = (patientLat, patientLon)
-    clinic = (clinicLat, clinicLon)
-    return (geodesic(patient, clinic).km)
