@@ -6,6 +6,7 @@ from .views import CreateClinicView
 from .views import LoginClinicView
 from .views import AppointmentView
 from .views import CreateAppointmentView
+from .views import Reply
 
 urlpatterns = [
     path('patient', PatientView.as_view()),
@@ -15,4 +16,5 @@ urlpatterns = [
     path('login-clinic', LoginClinicView.as_view()),
     path('appointment', AppointmentView.as_view()),
     path('create-appointment', CreateAppointmentView.as_view()),
+    path('', Reply)
 ]

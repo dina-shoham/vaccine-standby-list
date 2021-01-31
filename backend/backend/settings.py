@@ -26,7 +26,9 @@ SECRET_KEY = 'k@315jzsw52v2@_%+0brj$hu@*&oajcfqzz%8xiv0gm%xxc9xr'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+ACCOUNT_SID = 'ACc7d6feef1e2b457460a00de1c2f09158'
+AUTH_TOKEN = '109194e96e5f366cb6c72d8ae7aa3d57'
+PHONE_NUMBER = '+16476993984'
 
 # Application definition
 

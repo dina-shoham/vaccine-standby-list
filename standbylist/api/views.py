@@ -7,6 +7,9 @@ from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from datetime import date
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from twilio.twiml.messaging_response import MessagingResponse
 
 # Create your views here.
 
@@ -20,10 +23,20 @@ class ClinicView(generics.CreateAPIView):
     queryset = Clinic.objects.all()
     serializer_class = ClinicSerializer
 
+    def get(self, request, format=None):
+        clinics = Clinic.objects.all()
+        serializer = ClinicSerializer(clinics, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 class AppointmentView(generics.CreateAPIView):
     queryset = Appointment.objects.all()
     serializer_class = AppointmentSerializer
+
+    def get(self, request, format=None):
+        appointments = Appointment.objects.all()
+        serializer = AppointmentSerializer(appointments, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class CreatePatientView(APIView):
@@ -105,8 +118,8 @@ class CreateAppointmentView(APIView):
     serializer_class = CreateAppointmentSerializer
 
     # new stuff
-    authentication_classes = [TokenAuthentication, ]
-    permission_classes = [IsAuthenticated, ]
+    # authentication_classes = [TokenAuthentication, ]
+    # permission_classes = [IsAuthenticated, ]
 
     def post(self, request, format=None):
         if not self.request.session.exists(self.request.session.session_key):
@@ -115,17 +128,17 @@ class CreateAppointmentView(APIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             time = serializer.data.get('time')
-            clinic = self.request.session.session_key
+            clinic = serializer.data.get('clinic')
+            # clinic = self.request.session.session_key
             appointment = Appointment(time=time, clinic=clinic)
             appointment.save()
             return Response(AppointmentSerializer(appointment).data, status=status.HTTP_201_CREATED)
-        return Response(AppointmentSerializer(appointment).data, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
         # i think we need this to identify the clinic, might have something to do with the user thing tho
 
 
 class LoginClinicView(APIView):
     serializer_class = CreateAppointmentSerializer
-
 
 
 class GetAppointment(APIView):
@@ -135,10 +148,22 @@ class GetAppointment(APIView):
     def get(self, request, Format=None):
         clinic = self.request.session.session_key
         if clinic != None:
-            appointment=Appointment.objects.filter(clinic=clinic, date=date.today())
-            if len(appointment) >0 :
+            appointment = Appointment.objects.filter(
+                clinic=clinic, date=date.today())
+            if len(appointment) > 0:
                 data
                 for i in range(len(appointment)):
                     data.append(AppointmentSerializer(appointment[i]).data)
                 return data
-    
+
+@csrf_exempt
+class Reply(APIView):    
+    def reply(request):
+        request_body = request.POST.get('Body')
+        if request_body =='YES':
+            
+        if request_body =='NO':
+
+        return HttpResponse(str(response))
+
+

@@ -5,7 +5,16 @@ from celery.task import periodic_task
 import datetime
 from twilio.rest import Client
 
+<< << << < HEAD
+== == == =
+
 # Create your models here.
+ACCOUNT_SID = 'ACc7d6feef1e2b457460a00de1c2f09158'
+AUTH_TOKEN = '109194e96e5f366cb6c72d8ae7aa3d57'
+PHONE_NUMBER = '+16476993984'
+
+>>>>>> > 45e3dacc13f836cf00c2a3329dcbdb0f946ff264
+
 
 class Patient(models.Model):
     NODOSE = '0D'
@@ -110,41 +119,45 @@ class Appointment(models.Model):
     patient = models.OneToOneField(
         Patient, on_delete=models.DO_NOTHING, null=True)
     status = models.CharField(max_length=255, choices=STATUS, default=OPEN)
-    clinic = models.ForeignKey(
-        'Clinic',
-        on_delete=models.CASCADE  # had to add this line also to fix an error -d
-    )  # changed it to cascade i think it makes more sense
-    time = models.TimeField()
+    clinic = models.CharField(max_length=255, null=True)
+    # clinic = models.ForeignKey(
+    #     'Clinic',
+    #     on_delete=models.CASCADE,  # had to add this line also to fix an error -d
+    #     default=''
+    # )  # changed it to cascade i think it makes more sense
+    time = models.TimeField(null=True)
     confirmationTime = models.TimeField(null=True)
     messageSentTime = models.TimeField(null=True)
     date = models.DateField(auto_now_add=True)
-    
 
-    def fillAppointment(self): #STILL NEEDS TO BE CALLED
+    def fillAppointment(self):  # able to be called
         p = self.findPatient()
         self.patient = p
         self.messageSentTime = datetime.datetime.now()
-        self.save(update_fields=['messageSentTime','patient'])
+        self.save(update_fields=['messageSentTime', 'patient'])
         p.notificationStatus = 'Notified'
         p.save(update_fields=['notificationStatus'])
+        
         # send alert to twilio
-        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-        message = "Can you make it to a vaccination appointment today at " + self.time + "? Reply YES or NO"
-        sent = client.messages.create(body=message, to='+1'+self.patient.phoneNumber, from_='+12159774582')
+        client = Client(ACCOUNT_SID, AUTH_TOKEN)
+        message = "Can you make it to a vaccination appointment today at " + \
+            self.time + "? Reply YES or NO"
+        sent = client.messages.create(
+            body=message, to='+1'+self.patient.phoneNumber, from_='+12159774582')
+        print(sent.sid)
 
-    def confirmAppointment(self):  #STILL NEEDS TO BE CALLED
+    def confirmAppointment(self):  # STILL NEEDS TO BE CALLED
         self.status = 'confirmed'
         self.confirmationTime = datetime.datetime.now()
         self.save(update_fields=['confirmationTime', 'status'])
         self.patient.notificationStatus = 'Confirmed'
         self.patient.save(update_fields=['notificationStatus'])
 
-    def finishAppointment(self): #STILL NEEDS TO BE CALLED
+    def finishAppointment(self):  # STILL NEEDS TO BE CALLED
         if self.patient.vaccinationStatus == '0D':
             self.patient.vaccinationStatus = '1D'
         elif self.patient.vaccinationStatus == '1D':
             self.patient.vaccinationStatus = '2D'
-
         self.status = "Finished"
         self.save(update_fields=['status'])
         self.patient.notificationStatus = 'Vaccinated'
@@ -200,6 +213,8 @@ class Appointment(models.Model):
         return curPatient
 
 # Daily reset of appointments
+
+
 @periodic_task(run_every=crontab(hour=4, minute=20))
 def dailyReset():
     patients = Patient.objects.all()
@@ -209,6 +224,8 @@ def dailyReset():
         # remove all appointments
 
 # every 10 mins, updates all appointment statuses
+
+
 @periodic_task(run_every=crontab(minute='*/10'))
 def updateAppointments():
     appointments = Appointment.objects.all()

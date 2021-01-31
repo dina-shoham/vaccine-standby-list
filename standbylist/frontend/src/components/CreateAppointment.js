@@ -6,6 +6,8 @@ export default class CreateAppointment extends Component {
     super(props);
     this.state = {
       time: "",
+      clinic: "",
+      appointments: [],
     };
   }
 
@@ -21,11 +23,25 @@ export default class CreateAppointment extends Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         time: this.state.time,
+        clinic: this.state.clinic,
       }),
     };
     fetch("/api/create-appointment", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log("successful post! " + data));
+      .then((response) => console.log("successful post! " + response));
+  };
+
+  getAppointments = () => {
+    console.log("getting appts");
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch("/api/appointments", requestOptions)
+      .then((response) => response.json)
+      .then((response) => {
+        this.setState({ appointments: response });
+      });
   };
 
   render() {
@@ -45,10 +61,28 @@ export default class CreateAppointment extends Component {
             value={this.state.time}
             onChange={(event) => this.handleChange(event, "time")}
           />
-          <button type="submit">Send out notification</button>
+          <br></br>
+          <label for="clinic">Clinic: </label>
+          <input
+            id="clinic"
+            type="clinic"
+            value={this.state.clinic}
+            onChange={(event) => this.handleChange(event, "clinic")}
+          />
+          <br></br>
+          <div>
+            <button type="submit">Send out notification</button>
+          </div>
         </form>
         <h1>Pending Appointments</h1>
-        <p>...will go here</p>
+        <button onclick={this.getAppointments}>
+          View pending appointments
+        </button>
+        <div>
+          {this.state.appointments.map((appointment) => {
+            return <p key={appointment.id}>{appointment.id}</p>;
+          })}
+        </div>
       </div>
     );
   }
