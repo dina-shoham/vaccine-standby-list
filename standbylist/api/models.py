@@ -1,5 +1,5 @@
 from django.db import models
-from geo.py import geodesic
+from geopy.distance import geodesic
 import datetime
 
 # Create your models here.
@@ -74,7 +74,9 @@ class Patient(models.Model):
 class Clinic(models.Model):
     lat = models.FloatField("latitude", null=True)
     lon = models.FloatField("longitude", null=True)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, null=True)
+    email = models.CharField(max_length=255, null=True)
+    address = models.CharField(max_length=255, null=True)
 
     # queue of patients will be found using get all patient by clinic in prioritization algorithm
     # when a clinic enters an appointment, it will create a new appointment
@@ -106,8 +108,8 @@ class Appointment(models.Model):
         on_delete=models.CASCADE  # had to add this line also to fix an error -d
     )  # changed it to cascade i think it makes more sense
     time = models.TimeField()
-    confirmationTime = models.TimeField()
-    messageSentTime = models.TimeField()
+    confirmationTime = models.TimeField(null=True)
+    messageSentTime = models.TimeField(null=True)
     date = models.DateField(auto_now_add=True)
 
     def fillAppointment():
@@ -116,7 +118,7 @@ class Appointment(models.Model):
         self.save(update_fields=['messageSentTime'])
         self.patient.notificationStatus = 'Notified'
         self.patient.save(update_fields=['notificationStatus'])
-        #send alert to twilio
+        # send alert to twilio
 
         #on twilio recieved:
         self.patient = p
@@ -131,7 +133,7 @@ class Appointment(models.Model):
             self.patient.vaccinationStatus = '1D'
         elif self.patient.vaccinationStatus == '1D':
             self.patient.vaccinationStatus = '2D'
-        
+
         self.status = "Finished"
         self.save(update_fields=['status'])
         self.patient.notificationStatus = 'Vaccinated'
@@ -139,12 +141,14 @@ class Appointment(models.Model):
 
     def checkAppointment():
         if status == 'open':
-            timeSinceSent = (datetime.datetime.now()-self.messageSentTime).total_seconds()
+            timeSinceSent = (datetime.datetime.now() -
+                             self.messageSentTime).total_seconds()
             if timeSinceSent > 1800:
                 fillAppointment()
 
         if status == "confirmed":
-            timeSinceAppointment = (datetime.datetime.now()-self.time).total_seconds()
+            timeSinceAppointment = (
+                datetime.datetime.now()-self.time).total_seconds()
             if timeSinceAppointment > 900:
                 self.status = "Missed"
                 self.save(update_fields=['status'])

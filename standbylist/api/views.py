@@ -32,7 +32,7 @@ class CreatePatientView(APIView):
             self.request.session.create()
 
         serializer = self.serializer_class(data=request.data)
-        
+
         if serializer.is_valid():
             age = serializer.data.get('age')
             firstName = serializer.data.get('firstName')
@@ -64,7 +64,7 @@ class CreatePatientView(APIView):
             patient.save()
             return Response(PatientSerializer(patient).data, status=status.HTTP_201_CREATED)
         print(serializer.errors)
-        return Response({serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CreateClinicView(APIView):
@@ -75,6 +75,7 @@ class CreateClinicView(APIView):
             self.request.session.create()
 
         serializer = self.serializer_class(data=request.data)
+
         if serializer.is_valid():
             name = serializer.data.get('name')
             email = serializer.data.get('email')
@@ -83,28 +84,37 @@ class CreateClinicView(APIView):
             password = serializer.data.get('password')
             lat = serializer.data.get('lat')
             lon = serializer.data.get('lon')
-            clinic = Clinic(name=name, email=email, address=address,
-                            username=username, password=password, lat=lat, lon=lon)
+            clinic = Clinic(
+                name=name,
+                email=email,
+                address=address,
+                username=username,
+                password=password,
+                lat=lat,
+                lon=lon
+            )
             clinic.save()
             return Response(ClinicSerializer(clinic).data, status=status.HTTP_201_CREATED)
-        return Response(PatientSerializer(clinic).data, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 class CreateAppointmentView(APIView):
     serializer_class = CreateAppointmentSerializer
 
     def post(self, request, format=None):
         if not self.request.session.exists(self.request.session.session_key):
-            self.request.session.create() 
-        
+            self.request.session.create()
+
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            time=serializer.data.get('time')
-            clinic=self.request.session.session_key
+            time = serializer.data.get('time')
+            clinic = self.request.session.session_key
             appointment = Appointment(time=time, clinic=clinic)
             appointment.save()
             return Response(AppointmentSerializer(appointment).data, status=status.HTTP_201_CREATED)
         return Response(AppointmentSerializer(appointment).data, status=status.HTTP_400_BAD_REQUEST)
         # i think we need this to identify the clinic, might have something to do with the user thing tho
-        
+
+
 class GetClinicView(APIView):
     serializer_class = ClinicSerializer

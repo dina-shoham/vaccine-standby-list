@@ -30,7 +30,7 @@ export default class ClinicSignUp extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault(); //stop it from refreshing for now so we can see the console.log
-    console.log(this.state);
+    console.log("SUBMITTING!");
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -44,9 +44,9 @@ export default class ClinicSignUp extends Component {
         lon: this.state.lon,
       }),
     };
-    fetch("/api/clinic", requestOptions)
+    fetch("/api/create-clinic", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log("successful post! " + data));
   };
 
   render() {
@@ -63,44 +63,45 @@ export default class ClinicSignUp extends Component {
             </Link>
           </div>
         </div>
-        <form onSubmit={this.handleSubmit}></form>
-        <label for="name">Clinic Name: </label>
-        <input
-          id="name"
-          value={this.state.name}
-          onChange={(event) => this.handleChange(event, "name")}
-        />
-        <br></br>
-        <label for="email">Clinic Email: </label>
-        <input
-          id="email"
-          value={this.state.email}
-          onChange={(event) => this.handleChange(event, "email")}
-        />
-        <br></br>
-        <label for="address">Address: </label>
-        <input
-          id="address"
-          value={this.state.address}
-          onChange={(event) => this.handleChange(event, "address")}
-        />
-        <br></br>
-        <label for="username">Username: </label>
-        <input
-          id="username"
-          value={this.state.username}
-          onChange={(event) => this.handleChange(event, "username")}
-        />
-        <br></br>
-        <label for="password">Password: </label>
-        <input
-          id="password"
-          type="password"
-          value={this.state.password}
-          onChange={(event) => this.handleChange(event, "password")}
-        />
-        <br></br>
-        <button type="submit">Sign up!</button>
+        <form onSubmit={this.handleSubmit}>
+          <label for="name">Clinic Name: </label>
+          <input
+            id="name"
+            value={this.state.name}
+            onChange={(event) => this.handleChange(event, "name")}
+          />
+          <br></br>
+          <label for="email">Clinic Email: </label>
+          <input
+            id="email"
+            value={this.state.email}
+            onChange={(event) => this.handleChange(event, "email")}
+          />
+          <br></br>
+          <label for="address">Address: </label>
+          <input
+            id="address"
+            value={this.state.address}
+            onChange={(event) => this.handleChange(event, "address")}
+          />
+          <br></br>
+          <label for="username">Username: </label>
+          <input
+            id="username"
+            value={this.state.username}
+            onChange={(event) => this.handleChange(event, "username")}
+          />
+          <br></br>
+          <label for="password">Password: </label>
+          <input
+            id="password"
+            type="password"
+            value={this.state.password}
+            onChange={(event) => this.handleChange(event, "password")}
+          />
+          <br></br>
+          <button type="submit">Sign up!</button>
+        </form>
       </div>
     );
   }

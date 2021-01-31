@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PatientForm from "./PatientForm";
 import ClinicSignUp from "./ClinicSignUp";
 import ClinicLogin from "./ClinicLogin";
+
 import {
   BrowserRouter as Router,
   Switch,
