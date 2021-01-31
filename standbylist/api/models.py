@@ -5,7 +5,11 @@ from celery.task import periodic_task
 import datetime
 from twilio.rest import Client
 
+
 # Create your models here.
+ACCOUNT_SID = 'ACc7d6feef1e2b457460a00de1c2f09158'
+AUTH_TOKEN = '109194e96e5f366cb6c72d8ae7aa3d57'
+PHONE_NUMBER = '+16476993984'
 
 class Patient(models.Model):
     NODOSE = '0D'
@@ -115,7 +119,7 @@ class Appointment(models.Model):
     date = models.DateField(auto_now_add=True)
     
 
-    def fillAppointment(self): #STILL NEEDS TO BE CALLED
+    def fillAppointment(self): #able to be called
         p = self.findPatient()
         self.patient = p
         self.messageSentTime = datetime.datetime.now()
@@ -123,9 +127,10 @@ class Appointment(models.Model):
         p.notificationStatus = 'Notified'
         p.save(update_fields=['notificationStatus'])
         # TO ADD send alert to twilio
-        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+        client = Client(ACCOUNT_SID, AUTH_TOKEN)
         message = "Can you make it to a vaccination appointment today at " + self.time + "? Reply YES or NO"
         sent = client.messages.create(body=message, to='+1'+self.patient.phoneNumber, from_='+12159774582')
+        print(sent.sid)
 
     def confirmAppointment(self):  #STILL NEEDS TO BE CALLED
         self.status = 'confirmed'
@@ -139,7 +144,6 @@ class Appointment(models.Model):
             self.patient.vaccinationStatus = '1D'
         elif self.patient.vaccinationStatus == '1D':
             self.patient.vaccinationStatus = '2D'
-
         self.status = "Finished"
         self.save(update_fields=['status'])
         self.patient.notificationStatus = 'Vaccinated'
