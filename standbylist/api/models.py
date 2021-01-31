@@ -6,47 +6,6 @@ import datetime
 
 # Create your models here.
 
-def findPatient(clinic, clinicRange):
-    patients = Patient.objects.filter(vaccinationStatus != "2D",  # grabs list of patients who have less than 2 doses
-                                      notificationStatus == "Unnotified",  # and who are unnotified
-                                      patientClinicDist(clinic.lat, clinic.lon, lat, lon) < clinicRange)  # and who are within range
-
-    curPatient = patients[0]
-    curHighestRisk = 0
-    for p in patients:
-        if p.occupation == "Tier 1":
-            tier = 1
-        elif p.occupation == "Tier 2":
-            tier = 2
-        elif p.occupation == "Tier 3":
-            tier = 3
-        elif p.occupation == "Tier 4":
-            tier = 4
-
-        if p.highRiskHousehold == True:
-            house = 1.1
-        else:
-            house = 1
-
-        if p.vaccinationStatus == "0D":
-            status = 1
-        elif p.vaccinationStatus == "1D":
-            status = 2.5
-
-        risk = (p.riskFactors+1)*p.age*(5-tier)*house*status
-        if(curHighestRisk < risk):
-            curHighestRisk = risk
-            curPatient = p
-
-    return curPatient
-
-
-def patientClinicDist(patientLat, patientLon, clinicLat, clinicLon):
-    patient = (patientLat, patientLon)
-    clinic = (clinicLat, clinicLon)
-    return (geodesic(patient, clinic).km)
-
-
 class Patient(models.Model):
     NODOSE = '0D'
     ONEDOSE = '1D'
@@ -156,12 +115,12 @@ class Appointment(models.Model):
     
 
     def fillAppointment(self): #STILL NEEDS TO BE CALLED
-        p = findPatient(self.clinic, 15)
+        p = self.findPatient()
         self.patient = p
         self.messageSentTime = datetime.datetime.now()
         self.save(update_fields=['messageSentTime','patient'])
-        self.patient.notificationStatus = 'Notified'
-        self.patient.save(update_fields=['notificationStatus'])
+        p.notificationStatus = 'Notified'
+        p.save(update_fields=['notificationStatus'])
         # TO ADD send alert to twilio
 
     def confirmAppointment(self):  #STILL NEEDS TO BE CALLED
@@ -183,19 +142,53 @@ class Appointment(models.Model):
         self.patient.save(update_fields=['vaccinationStatus'])
 
     def checkAppointment(self):
-        if status == 'open':  # if theyve gotten the msg but havent responded in 30mins
+        if self.status == 'open':  # if theyve gotten the msg but havent responded in 30mins
             timeSinceSent = (datetime.datetime.now() -
                              self.messageSentTime).total_seconds()
             if timeSinceSent > 1800:
                 fillAppointment()
                 # TO ADD send msg that theyve been cancelled
 
-        if status == "confirmed":  # if theyve confirmed but its 15mins past the appointment time
+        if self.status == "confirmed":  # if theyve confirmed but its 15mins past the appointment time
             timeSinceAppointment = (
                 datetime.datetime.now()-self.time).total_seconds()
             if timeSinceAppointment > 900:
                 self.status = "Missed"
                 self.save(update_fields=['status'])
+    
+    def findPatient(self):
+        patients = Patient.objects.filter(notificationStatus = "Unnotified")  # grabs list of patients who have less than 2 doses
+                                       # Patient.vaccinationStatus != "2D",  # and who are unnotified
+                                        #patientClinicDist(self.clinic.lat, self.clinic.lon, lat, lon) < 15)  # and who are within range
+
+        curPatient = patients[0]
+        curHighestRisk = 0
+        for p in patients:
+            if p.occupation == "Tier 1":
+                tier = 1
+            elif p.occupation == "Tier 2":
+                tier = 2
+            elif p.occupation == "Tier 3":
+                tier = 3
+            elif p.occupation == "Tier 4":
+                tier = 4
+
+            if p.highRiskHousehold == True:
+                house = 1.1
+            else:
+                house = 1
+
+            if p.vaccinationStatus == "0D":
+                status = 1
+            elif p.vaccinationStatus == "1D":
+                status = 2.5
+
+            risk = (p.riskFactors+1)*p.age*(5-tier)*house*status
+            if(curHighestRisk < risk):
+                curHighestRisk = risk
+                curPatient = p
+
+        return curPatient
 
 # Daily reset of appointments
 @periodic_task(run_every=crontab(hour=4, minute=20))
@@ -212,3 +205,9 @@ def updateAppointments():
     appointments = Appointment.objects.all()
     for a in appointments:
         a.checkAppointment()
+
+
+def patientClinicDist(patientLat, patientLon, clinicLat, clinicLon):
+    patient = (patientLat, patientLon)
+    clinic = (clinicLat, clinicLon)
+    return (geodesic(patient, clinic).km)
