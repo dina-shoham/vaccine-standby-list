@@ -7,8 +7,6 @@ import datetime
 # Create your models here.
 
 
-
-
 class Patient(models.Model):
     NODOSE = '0D'
     ONEDOSE = '1D'
@@ -107,15 +105,16 @@ class Appointment(models.Model):
     patient = models.OneToOneField(
         Patient, on_delete=models.DO_NOTHING, null=True)
     status = models.CharField(max_length=255, choices=STATUS, default=OPEN)
-    clinic = models.ForeignKey(
-        'Clinic',
-        on_delete=models.CASCADE  # had to add this line also to fix an error -d
-    )  # changed it to cascade i think it makes more sense
-    time = models.TimeField()
+    clinic = models.CharField(max_length=255, null=True)
+    # clinic = models.ForeignKey(
+    #     'Clinic',
+    #     on_delete=models.CASCADE,  # had to add this line also to fix an error -d
+    #     default=''
+    # )  # changed it to cascade i think it makes more sense
+    time = models.TimeField(null=True)
     confirmationTime = models.TimeField(null=True)
     messageSentTime = models.TimeField(null=True)
     date = models.DateField(auto_now_add=True)
-    
 
     def fillAppointment(self):
         p = findPatient(self.clinic, 15)
@@ -132,8 +131,7 @@ class Appointment(models.Model):
         #     self.save(update_fields=['confirmationTime', 'status'])
         #     self.patient.notificationStatus = 'Confirmed'
         #     self.patient.save(update_fields=['notificationStatus'])
-    
-    
+
     def finishAppointment(self):
         if self.patient.vaccinationStatus == '0D':
             self.patient.vaccinationStatus = '1D'
@@ -159,6 +157,7 @@ class Appointment(models.Model):
             if timeSinceAppointment > 900:
                 self.status = "Missed"
                 self.save(update_fields=['status'])
+
 
 def findPatient(clinic, clinicRange):
     patients = Patient.objects.filter(vaccinationStatus != "2D",  # grabs list of patients who have less than 2 doses

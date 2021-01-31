@@ -44,9 +44,9 @@ export default class ClinicSignUp extends Component {
         lon: this.state.lon,
       }),
     };
-    fetch(requestOptions)
-      .then((response) => response.json())
-      .then((response) => console.log(response))
+    fetch("/api/create-clinic", requestOptions)
+      .then((data) => data.json())
+      .then((data) => console.log(data))
       .catch((error) => console.log(error));
   };
 
@@ -101,9 +101,7 @@ export default class ClinicSignUp extends Component {
             onChange={(event) => this.handleChange(event, "password")}
           />
           <br></br>
-          <Link to="/clinic/login">
-            <button type="submit">Sign up!</button>
-          </Link>
+          <button type="submit">Sign up!</button>
         </form>
       </div>
     );
