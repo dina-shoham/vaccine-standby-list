@@ -48,7 +48,7 @@ export default class ClinicSignUp extends Component {
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
-    // .then((data) => this.props.history.push("/create-appointment/"));
+    
   };
 
   render() {
@@ -102,7 +102,9 @@ export default class ClinicSignUp extends Component {
             onChange={(event) => this.handleChange(event, "password")}
           />
           <br></br>
+          <Link to="/clinic/login">
           <button type="submit">Sign up!</button>
+          </Link>
         </form>
       </div>
     );

@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from datetime import date
 
 # Create your views here.
 
@@ -124,3 +125,20 @@ class CreateAppointmentView(APIView):
 
 class LoginClinicView(APIView):
     serializer_class = CreateAppointmentSerializer
+
+
+
+class GetAppointment(APIView):
+    serializer_class = AppointmentSerializer
+    lookup_url_kwarg = 'clinic'
+
+    def get(self, request, Format=None):
+        clinic = self.request.session.session_key
+        if clinic != None:
+            appointment=Appointment.objects.filter(clinic=clinic, date=date.today())
+            if len(appointment) >0 :
+                data
+                for i in range(len(appointment)):
+                    data.append(AppointmentSerializer(appointment[i]).data)
+                return data
+    
