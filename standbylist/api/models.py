@@ -195,9 +195,16 @@ def patientClinicDist(patientLat, patientLon, clinicLat, clinicLon):
     clinic = (clinicLat, clinicLon)
     return (geodesic(patient, clinic).km)
 
-@periodic_task(run_every=crontab(hour=4, minute=20))
+@periodic_task(run_every=crontab(hour=4, minute=20)) #Daily reset of appointments
 def dailyReset():
     patients = Patient.objects.all()
     for p in patients:
         p.notificationStatus = 'Unnotified'
         p.save(update_fields=['notificationStatus'])
+        #remove all appointments
+
+@periodic_task(run_every=crontab(minute='*/10')) #every 10 mins, updates all appointment statuses
+def updateAppointments():
+    appointments = Appointment.objects.all()
+    for a in appointments:
+        a.checkAppointment()
