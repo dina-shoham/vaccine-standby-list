@@ -4,6 +4,8 @@ from .serializers import PatientSerializer, ClinicSerializer, AppointmentSeriali
 from .models import Patient, Clinic, Appointment
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 # Create your views here.
@@ -101,6 +103,10 @@ class CreateClinicView(APIView):
 class CreateAppointmentView(APIView):
     serializer_class = CreateAppointmentSerializer
 
+    #new stuff
+    authentication_classes=[TokenAuthentication, ]
+    permission_classes=[IsAuthenticated, ]
+
     def post(self, request, format=None):
         if not self.request.session.exists(self.request.session.session_key):
             self.request.session.create()
@@ -115,6 +121,3 @@ class CreateAppointmentView(APIView):
         return Response(AppointmentSerializer(appointment).data, status=status.HTTP_400_BAD_REQUEST)
         # i think we need this to identify the clinic, might have something to do with the user thing tho
 
-
-class GetClinicView(APIView):
-    serializer_class = ClinicSerializer
