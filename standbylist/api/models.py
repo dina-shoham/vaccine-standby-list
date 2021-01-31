@@ -5,47 +5,15 @@ from celery.task import periodic_task
 import datetime
 from twilio.rest import Client
 
+<< << << < HEAD
+== == == =
+
 # Create your models here.
+ACCOUNT_SID = 'ACc7d6feef1e2b457460a00de1c2f09158'
+AUTH_TOKEN = '109194e96e5f366cb6c72d8ae7aa3d57'
+PHONE_NUMBER = '+16476993984'
 
-def findPatient(clinic, clinicRange):
-    patients = Patient.objects.filter(vaccinationStatus != "2D",  # grabs list of patients who have less than 2 doses
-                                      notificationStatus == "Unnotified",  # and who are unnotified
-                                      patientClinicDist(clinic.lat, clinic.lon, lat, lon) < clinicRange)  # and who are within range
-
-    curPatient = patients[0]
-    curHighestRisk = 0
-    for p in patients:
-        if p.occupation == "Tier 1":
-            tier = 1
-        elif p.occupation == "Tier 2":
-            tier = 2
-        elif p.occupation == "Tier 3":
-            tier = 3
-        elif p.occupation == "Tier 4":
-            tier = 4
-
-        if p.highRiskHousehold == True:
-            house = 1.1
-        else:
-            house = 1
-
-        if p.vaccinationStatus == "0D":
-            status = 1
-        elif p.vaccinationStatus == "1D":
-            status = 2.5
-
-        risk = (p.riskFactors+1)*p.age*(5-tier)*house*status
-        if(curHighestRisk < risk):
-            curHighestRisk = risk
-            curPatient = p
-
-    return curPatient
-
-
-def patientClinicDist(patientLat, patientLon, clinicLat, clinicLon):
-    patient = (patientLat, patientLon)
-    clinic = (clinicLat, clinicLon)
-    return (geodesic(patient, clinic).km)
+>>>>>> > 45e3dacc13f836cf00c2a3329dcbdb0f946ff264
 
 
 class Patient(models.Model):
@@ -146,63 +114,102 @@ class Appointment(models.Model):
     patient = models.OneToOneField(
         Patient, on_delete=models.DO_NOTHING, null=True)
     status = models.CharField(max_length=255, choices=STATUS, default=OPEN)
-    clinic = models.ForeignKey(
-        'Clinic',
-        on_delete=models.CASCADE  # had to add this line also to fix an error -d
-    )  # changed it to cascade i think it makes more sense
-    time = models.TimeField()
+    clinic = models.CharField(max_length=255, null=True)
+    # clinic = models.ForeignKey(
+    #     'Clinic',
+    #     on_delete=models.CASCADE,  # had to add this line also to fix an error -d
+    #     default=''
+    # )  # changed it to cascade i think it makes more sense
+    time = models.TimeField(null=True)
     confirmationTime = models.TimeField(null=True)
     messageSentTime = models.TimeField(null=True)
     date = models.DateField(auto_now_add=True)
-    
 
-    def fillAppointment(self): #STILL NEEDS TO BE CALLED
-        p = findPatient(self.clinic, 15)
+    def fillAppointment(self):  # able to be called
+        p = self.findPatient()
         self.patient = p
         self.messageSentTime = datetime.datetime.now()
-        self.save(update_fields=['messageSentTime','patient'])
-        self.patient.notificationStatus = 'Notified'
-        self.patient.save(update_fields=['notificationStatus'])
-        
+        self.save(update_fields=['messageSentTime', 'patient'])
+        p.notificationStatus = 'Notified'
+        p.save(update_fields=['notificationStatus'])
         # TO ADD send alert to twilio
-        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-        message = "Can you make it to a vaccination appointment today at " + self.time + "? Reply YES or NO"
-        sent = client.messages.create(body=message, to='+1'+self.patient.phoneNumber, from_='+12159774582')
+        client = Client(ACCOUNT_SID, AUTH_TOKEN)
+        message = "Can you make it to a vaccination appointment today at " + \
+            self.time + "? Reply YES or NO"
+        sent = client.messages.create(
+            body=message, to='+1'+self.patient.phoneNumber, from_='+12159774582')
+        print(sent.sid)
 
-    def confirmAppointment(self):  #STILL NEEDS TO BE CALLED
+    def confirmAppointment(self):  # STILL NEEDS TO BE CALLED
         self.status = 'confirmed'
         self.confirmationTime = datetime.datetime.now()
         self.save(update_fields=['confirmationTime', 'status'])
         self.patient.notificationStatus = 'Confirmed'
         self.patient.save(update_fields=['notificationStatus'])
 
-    def finishAppointment(self): #STILL NEEDS TO BE CALLED
+    def finishAppointment(self):  # STILL NEEDS TO BE CALLED
         if self.patient.vaccinationStatus == '0D':
             self.patient.vaccinationStatus = '1D'
         elif self.patient.vaccinationStatus == '1D':
             self.patient.vaccinationStatus = '2D'
-
         self.status = "Finished"
         self.save(update_fields=['status'])
         self.patient.notificationStatus = 'Vaccinated'
         self.patient.save(update_fields=['vaccinationStatus'])
 
     def checkAppointment(self):
-        if status == 'open':  # if theyve gotten the msg but havent responded in 30mins
+        if self.status == 'open':  # if theyve gotten the msg but havent responded in 30mins
             timeSinceSent = (datetime.datetime.now() -
                              self.messageSentTime).total_seconds()
             if timeSinceSent > 1800:
                 fillAppointment()
                 # TO ADD send msg that theyve been cancelled
 
-        if status == "confirmed":  # if theyve confirmed but its 15mins past the appointment time
+        if self.status == "confirmed":  # if theyve confirmed but its 15mins past the appointment time
             timeSinceAppointment = (
                 datetime.datetime.now()-self.time).total_seconds()
             if timeSinceAppointment > 900:
                 self.status = "Missed"
                 self.save(update_fields=['status'])
 
+    def findPatient(self):
+        # grabs list of patients who have less than 2 doses
+        patients = Patient.objects.filter(notificationStatus="Unnotified")
+        # Patient.vaccinationStatus != "2D",  # and who are unnotified
+        # patientClinicDist(self.clinic.lat, self.clinic.lon, lat, lon) < 15)  # and who are within range
+
+        curPatient = patients[0]
+        curHighestRisk = 0
+        for p in patients:
+            if p.occupation == "Tier 1":
+                tier = 1
+            elif p.occupation == "Tier 2":
+                tier = 2
+            elif p.occupation == "Tier 3":
+                tier = 3
+            elif p.occupation == "Tier 4":
+                tier = 4
+
+            if p.highRiskHousehold == True:
+                house = 1.1
+            else:
+                house = 1
+
+            if p.vaccinationStatus == "0D":
+                status = 1
+            elif p.vaccinationStatus == "1D":
+                status = 2.5
+
+            risk = (p.riskFactors+1)*p.age*(5-tier)*house*status
+            if(curHighestRisk < risk):
+                curHighestRisk = risk
+                curPatient = p
+
+        return curPatient
+
 # Daily reset of appointments
+
+
 @periodic_task(run_every=crontab(hour=4, minute=20))
 def dailyReset():
     patients = Patient.objects.all()
@@ -212,8 +219,16 @@ def dailyReset():
         # remove all appointments
 
 # every 10 mins, updates all appointment statuses
+
+
 @periodic_task(run_every=crontab(minute='*/10'))
 def updateAppointments():
     appointments = Appointment.objects.all()
     for a in appointments:
         a.checkAppointment()
+
+
+def patientClinicDist(patientLat, patientLon, clinicLat, clinicLon):
+    patient = (patientLat, patientLon)
+    clinic = (clinicLat, clinicLon)
+    return (geodesic(patient, clinic).km)
