@@ -5,15 +5,11 @@ from celery.task import periodic_task
 import datetime
 from twilio.rest import Client
 
-<< << << < HEAD
-== == == =
 
 # Create your models here.
 ACCOUNT_SID = 'ACc7d6feef1e2b457460a00de1c2f09158'
 AUTH_TOKEN = '109194e96e5f366cb6c72d8ae7aa3d57'
 PHONE_NUMBER = '+16476993984'
-
->>>>>> > 45e3dacc13f836cf00c2a3329dcbdb0f946ff264
 
 
 class Patient(models.Model):

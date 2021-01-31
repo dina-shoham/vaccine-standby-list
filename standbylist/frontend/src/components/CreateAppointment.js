@@ -37,11 +37,12 @@ export default class CreateAppointment extends Component {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     };
-    fetch("/api/appointments", requestOptions)
+    fetch("/api/appointment", requestOptions)
       .then((response) => response.json)
       .then((response) => {
         this.setState({ appointments: response });
       });
+    console.log(response);
   };
 
   render() {
