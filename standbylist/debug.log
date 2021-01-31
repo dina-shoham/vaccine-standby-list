@@ -1,0 +1,1723 @@
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/frontend/main.js HTTP/1.1" 200 274950
+"GET /static/css/index.css HTTP/1.1" 200 354
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3129
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2021-01-31 09:05:06.170277' AND "django_session"."session_key" = 'uuzbzd1vxis48406fy55drk2ul8oq8i2'); args=('2021-01-31 09:05:06.170277', 'uuzbzd1vxis48406fy55drk2ul8oq8i2')
+(0.000) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'uuzbzd1vxis48406fy55drk2ul8oq8i2'  LIMIT 1; args=('uuzbzd1vxis48406fy55drk2ul8oq8i2',)
+(0.000) SELECT "api_clinic"."id", "api_clinic"."lat", "api_clinic"."lon", "api_clinic"."name", "api_clinic"."email", "api_clinic"."address", "api_clinic"."username", "api_clinic"."password" FROM "api_clinic" WHERE "api_clinic"."id" = 123; args=(123,)
+Bad Request: /api/create-appointment
+"POST /api/create-appointment HTTP/1.1" 400 33
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2021-01-31 09:05:52.863231' AND "django_session"."session_key" = 'uuzbzd1vxis48406fy55drk2ul8oq8i2'); args=('2021-01-31 09:05:52.863231', 'uuzbzd1vxis48406fy55drk2ul8oq8i2')
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'input.html', 'input_type': 'time', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320d3ba30>}
+Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [placeholder] in {'base_template': 'input.html', 'input_type': 'time', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320d3ba30>}
+Exception while resolving variable 'autofocus' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [autofocus] in {'base_template': 'input.html', 'input_type': 'time', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320d3ba30>}
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/select.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'select.html', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320d3ba30>}
+Exception while resolving variable 'allow_blank' in template 'rest_framework/horizontal/select.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'BoundField' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/home/dina/.local/lib/python3.8/site-packages/rest_framework/utils/serializer_helpers.py", line 67, in __getattr__
+    return getattr(self._field, attr_name)
+AttributeError: 'PrimaryKeyRelatedField' object has no attribute 'allow_blank'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'allow_blank'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [allow_blank] in <BoundField value= errors=None>
+(0.001) SELECT "api_clinic"."id", "api_clinic"."lat", "api_clinic"."lon", "api_clinic"."name", "api_clinic"."email", "api_clinic"."address", "api_clinic"."username", "api_clinic"."password" FROM "api_clinic"  LIMIT 1000; args=()
+Method Not Allowed: /api/create-appointment
+"GET /api/create-appointment HTTP/1.1" 405 11935
+File /usr/lib/python3/dist-packages/django/conf/locale/en/formats.py first seen with mtime 1585725412.0
+File /usr/lib/python3/dist-packages/django/conf/locale/en/__init__.py first seen with mtime 1549875336.0
+File /usr/lib/python3/dist-packages/pygments/styles/emacs.py first seen with mtime 1543070048.0
+File /usr/lib/python3/dist-packages/markdown/extensions/toc.py first seen with mtime 1552001965.0
+"GET /static/rest_framework/css/bootstrap.min.css.map HTTP/1.1" 404 1744
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2021-01-31 09:06:06.791429' AND "django_session"."session_key" = 'uuzbzd1vxis48406fy55drk2ul8oq8i2'); args=('2021-01-31 09:06:06.791429', 'uuzbzd1vxis48406fy55drk2ul8oq8i2')
+(0.000) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'uuzbzd1vxis48406fy55drk2ul8oq8i2'  LIMIT 1; args=('uuzbzd1vxis48406fy55drk2ul8oq8i2',)
+(0.000) SELECT "api_clinic"."id", "api_clinic"."lat", "api_clinic"."lon", "api_clinic"."name", "api_clinic"."email", "api_clinic"."address", "api_clinic"."username", "api_clinic"."password" FROM "api_clinic" WHERE "api_clinic"."id" = 52; args=(52,)
+Internal Server Error: /api/create-appointment
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python3/dist-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/lib/python3/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/dina/.local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/dina/.local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/dina/.local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/dina/.local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/views.py", line 133, in post
+    appointment = Appointment(time=time, clinic=clinic)
+  File "/usr/lib/python3/dist-packages/django/db/models/base.py", line 483, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/usr/lib/python3/dist-packages/django/db/models/fields/related_descriptors.py", line 206, in __set__
+    raise ValueError(
+ValueError: Cannot assign "52": "Appointment.clinic" must be a "Clinic" instance.
+"POST /api/create-appointment HTTP/1.1" 500 112135
+(0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2021-01-31 09:06:29.091256' AND "django_session"."session_key" = 'uuzbzd1vxis48406fy55drk2ul8oq8i2'); args=('2021-01-31 09:06:29.091256', 'uuzbzd1vxis48406fy55drk2ul8oq8i2')
+(0.000) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'uuzbzd1vxis48406fy55drk2ul8oq8i2'  LIMIT 1; args=('uuzbzd1vxis48406fy55drk2ul8oq8i2',)
+Bad Request: /api/create-appointment
+"POST /api/create-appointment HTTP/1.1" 400 33
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2021-01-31 09:08:30.723336' AND "django_session"."session_key" = 'uuzbzd1vxis48406fy55drk2ul8oq8i2'); args=('2021-01-31 09:08:30.723336', 'uuzbzd1vxis48406fy55drk2ul8oq8i2')
+(0.000) SELECT "api_clinic"."id", "api_clinic"."lat", "api_clinic"."lon", "api_clinic"."name", "api_clinic"."email", "api_clinic"."address", "api_clinic"."username", "api_clinic"."password" FROM "api_clinic"; args=()
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [placeholder] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'autofocus' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [autofocus] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [placeholder] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'autofocus' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [autofocus] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [placeholder] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'autofocus' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [autofocus] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [placeholder] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'autofocus' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [autofocus] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [placeholder] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+Exception while resolving variable 'autofocus' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [autofocus] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe32046a970>}
+"GET /api/clinic HTTP/1.1" 200 14061
+"GET /static/rest_framework/css/bootstrap.min.css.map HTTP/1.1" 404 1744
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'patient'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-patient'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'login-clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'appointment'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-appointment'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'api/clinic/51'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'patient'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-patient'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'login-clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'appointment'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-appointment'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'api/clinic/51'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Not Found: /api/clinic/51
+"GET /api/clinic/51 HTTP/1.1" 404 4320
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'patient'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-patient'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'login-clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'appointment'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-appointment'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'api/clinic/52'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'patient'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-patient'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'login-clinic'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'appointment'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern 'create-appointment'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'api/clinic/52'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Not Found: /api/clinic/52
+"GET /api/clinic/52 HTTP/1.1" 404 4320
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2021-01-31 09:11:20.106623' AND "django_session"."session_key" = 'uuzbzd1vxis48406fy55drk2ul8oq8i2'); args=('2021-01-31 09:11:20.106623', 'uuzbzd1vxis48406fy55drk2ul8oq8i2')
+(0.000) SELECT "api_clinic"."id", "api_clinic"."lat", "api_clinic"."lon", "api_clinic"."name", "api_clinic"."email", "api_clinic"."address", "api_clinic"."username", "api_clinic"."password" FROM "api_clinic"; args=()
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [placeholder] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'autofocus' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [autofocus] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [placeholder] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'autofocus' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [autofocus] in {'base_template': 'input.html', 'input_type': 'number', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [placeholder] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'autofocus' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [autofocus] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [placeholder] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'autofocus' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [autofocus] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'hide_label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [hide_label] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'placeholder'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [placeholder] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+Exception while resolving variable 'autofocus' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+KeyError: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'autofocus'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [autofocus] in {'base_template': 'input.html', 'input_type': 'text', 'template_pack': 'rest_framework/horizontal', 'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0x7fe320ceefa0>}
+"GET /api/clinic HTTP/1.1" 200 14061
+"GET /static/rest_framework/css/bootstrap.min.css.map HTTP/1.1" 404 1744
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/css/index.css HTTP/1.1" 200 354
+"GET /static/frontend/main.js HTTP/1.1" 200 275698
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3129
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/css/index.css HTTP/1.1" 200 354
+"GET /static/frontend/main.js HTTP/1.1" 200 275698
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3129
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/frontend/main.js HTTP/1.1" 304 0
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/frontend/main.js HTTP/1.1" 200 275774
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/frontend/main.js HTTP/1.1" 200 275774
+"GET /static/css/index.css HTTP/1.1" 200 354
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3129
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/frontend/main.js HTTP/1.1" 200 275493
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/frontend/main.js HTTP/1.1" 304 0
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/frontend/main.js HTTP/1.1" 304 0
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/frontend/main.js HTTP/1.1" 304 0
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/frontend/main.js HTTP/1.1" 304 0
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/frontend/main.js HTTP/1.1" 304 0
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /create-appointment HTTP/1.1" 200 702
+"GET /static/frontend/main.js HTTP/1.1" 200 274944
+"GET /static/css/index.css HTTP/1.1" 200 354
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/lib/python3/dist-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python3/dist-packages/django/urls/resolvers.py", line 567, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <module 'clearcache.urls' from '/home/dina/.local/lib/python3.8/site-packages/clearcache/urls.py'> (None:None) 'admin/clearcache/'>], [<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/signup'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'clinic/login'>], [<URLResolver <module 'frontend.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/frontend/urls.py'> (None:None) ''>, <URLPattern 'create-appointment'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/django/template/base.py", line 848, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'api.urls' from '/home/dina/git/mchacks/vaccine-standby-list/standbylist/api/urls.py'> (None:None) 'api/'>
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3129

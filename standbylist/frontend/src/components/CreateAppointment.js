@@ -23,7 +23,7 @@ export default class CreateAppointment extends Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         time: this.state.time,
-        clinic: this.state.clinic,
+        // clinic: this.state.clinic,
       }),
     };
     fetch("/api/create-appointment", requestOptions)
