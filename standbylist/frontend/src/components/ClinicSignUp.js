@@ -46,9 +46,8 @@ export default class ClinicSignUp extends Component {
     };
     fetch(requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((response) => console.log(response))
       .catch((error) => console.log(error));
-    // .then((data) => this.props.history.push("/create-appointment/"));
   };
 
   render() {

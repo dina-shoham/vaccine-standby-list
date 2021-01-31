@@ -6,6 +6,7 @@ export default class CreateAppointment extends Component {
     super(props);
     this.state = {
       time: "",
+      appointments: [],
     };
   }
 
@@ -25,7 +26,20 @@ export default class CreateAppointment extends Component {
     };
     fetch("/api/create-appointment", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log("successful post! " + data));
+      .then((response) => console.log("successful post! " + data));
+  };
+
+  getAppointments = () => {
+    console.log("getting appts");
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch("/api/appointments", requestOptions)
+      .then((response) => response.json)
+      .then((response) => {
+        this.setState({ appointments: response });
+      });
   };
 
   render() {
@@ -48,7 +62,14 @@ export default class CreateAppointment extends Component {
           <button type="submit">Send out notification</button>
         </form>
         <h1>Pending Appointments</h1>
-        <p>...will go here</p>
+        <button onclick={this.getAppointments}>
+          View pending appointments
+        </button>
+        <div>
+          {this.state.appointments.map((appointment) => {
+            return <p key={appointment.id}>{appointment.id}</p>;
+          })}
+        </div>
       </div>
     );
   }
