@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PatientForm from "./PatientForm";
 import ClinicSignUp from "./ClinicSignUp";
 import ClinicLogin from "./ClinicLogin";
+import CreateAppointment from "./CreateAppointment";
 
 import {
   BrowserRouter as Router,
@@ -41,6 +42,10 @@ export default class HomePage extends Component {
           <Route path="/signup" component={PatientForm}></Route>
           <Route path="/clinic/signup" component={ClinicSignUp}></Route>
           <Route path="/clinic/login" component={ClinicLogin}></Route>
+          <Route
+            path="/create-appointment"
+            component={CreateAppointment}
+          ></Route>
         </Switch>
       </Router>
     );
