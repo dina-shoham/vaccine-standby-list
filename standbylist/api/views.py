@@ -161,7 +161,7 @@ class Reply(APIView):
     def reply(request):
         request_body = request.POST.get('Body')
         if request_body =='YES':
-            
+        
         if request_body =='NO':
 
         return HttpResponse(str(response))
