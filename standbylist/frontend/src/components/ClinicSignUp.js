@@ -101,7 +101,9 @@ export default class ClinicSignUp extends Component {
             onChange={(event) => this.handleChange(event, "password")}
           />
           <br></br>
-          <button type="submit">Sign up!</button>
+          <Link to="/clinic/login">
+            <button type="submit">Sign up!</button>
+          </Link>
         </form>
       </div>
     );

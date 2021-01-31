@@ -1,6 +1,7 @@
 # vaccine-standby-list
 McHacks 8 Project!
 
-Hi This is michael's test push!!
-hello
-Joey's test push!
+An App that helps connect clinics with extra unfrozen moderna vaccines to nearby people who are looking for a COVID vaccination
+
+REQUIRES:   pip install django-celery
+            pip install geopy

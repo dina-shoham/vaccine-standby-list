@@ -1,10 +1,12 @@
 from django.db import models
 from geopy.distance import geodesic
-# from celery.schedules import crontab
-# from celery.task import periodic_task
+from celery.schedules import crontab
+from celery.task import periodic_task
 import datetime
 
 # Create your models here.
+
+
 
 
 class Patient(models.Model):
@@ -113,8 +115,9 @@ class Appointment(models.Model):
     confirmationTime = models.TimeField(null=True)
     messageSentTime = models.TimeField(null=True)
     date = models.DateField(auto_now_add=True)
+    
 
-    def fillAppointment():
+    def fillAppointment(self):
         p = findPatient(self.clinic, 15)
         self.messageSentTime = datetime.datetime.now()
         self.save(update_fields=['messageSentTime'])
@@ -129,8 +132,9 @@ class Appointment(models.Model):
         #     self.save(update_fields=['confirmationTime', 'status'])
         #     self.patient.notificationStatus = 'Confirmed'
         #     self.patient.save(update_fields=['notificationStatus'])
-
-    def finishAppointment():
+    
+    
+    def finishAppointment(self):
         if self.patient.vaccinationStatus == '0D':
             self.patient.vaccinationStatus = '1D'
         elif self.patient.vaccinationStatus == '1D':
@@ -141,7 +145,7 @@ class Appointment(models.Model):
         self.patient.notificationStatus = 'Vaccinated'
         self.patient.save(update_fields=['vaccinationStatus'])
 
-    def checkAppointment():
+    def checkAppointment(self):
         if status == 'open':  # if theyve gotten the msg but havent responded in 30mins
             timeSinceSent = (datetime.datetime.now() -
                              self.messageSentTime).total_seconds()
@@ -155,7 +159,6 @@ class Appointment(models.Model):
             if timeSinceAppointment > 900:
                 self.status = "Missed"
                 self.save(update_fields=['status'])
-
 
 def findPatient(clinic, clinicRange):
     patients = Patient.objects.filter(vaccinationStatus != "2D",  # grabs list of patients who have less than 2 doses
