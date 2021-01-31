@@ -153,6 +153,7 @@ class Appointment(models.Model):
     confirmationTime = models.TimeField(null=True)
     messageSentTime = models.TimeField(null=True)
     date = models.DateField(auto_now_add=True)
+    
 
     def fillAppointment(self): #STILL NEEDS TO BE CALLED
         p = findPatient(self.clinic, 15)
@@ -195,7 +196,6 @@ class Appointment(models.Model):
             if timeSinceAppointment > 900:
                 self.status = "Missed"
                 self.save(update_fields=['status'])
-
 
 # Daily reset of appointments
 @periodic_task(run_every=crontab(hour=4, minute=20))
