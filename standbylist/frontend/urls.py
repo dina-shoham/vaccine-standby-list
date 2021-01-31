@@ -6,4 +6,5 @@ urlpatterns = [
     path('signup', index),
     path('clinic/signup', index),
     path('clinic/login', index),
+    path('create-appointment', index)
 ]

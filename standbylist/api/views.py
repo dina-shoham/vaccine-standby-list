@@ -5,8 +5,8 @@ from .models import Patient, Clinic, Appointment
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-
 # Create your views here.
+
 
 class PatientView(generics.CreateAPIView):
     queryset = Patient.objects.all()
