@@ -1,7 +1,7 @@
 from django.db import models
 from geopy.distance import geodesic
-from celery.schedules import crontab
-from celery.task import periodic_task
+# from celery.schedules import crontab
+# from celery.task import periodic_task
 import datetime
 
 # Create your models here.
@@ -120,7 +120,7 @@ class Appointment(models.Model):
         self.save(update_fields=['messageSentTime'])
         self.patient.notificationStatus = 'Notified'
         self.patient.save(update_fields=['notificationStatus'])
-        #TO ADD send alert to twilio
+        # TO ADD send alert to twilio
 
         # #TO ADD on twilio recieved:
         #     self.patient = p
@@ -135,21 +135,23 @@ class Appointment(models.Model):
             self.patient.vaccinationStatus = '1D'
         elif self.patient.vaccinationStatus == '1D':
             self.patient.vaccinationStatus = '2D'
-        
+
         self.status = "Finished"
         self.save(update_fields=['status'])
         self.patient.notificationStatus = 'Vaccinated'
         self.patient.save(update_fields=['vaccinationStatus'])
 
     def checkAppointment():
-        if status == 'open': #if theyve gotten the msg but havent responded in 30mins
-            timeSinceSent = (datetime.datetime.now()-self.messageSentTime).total_seconds()
+        if status == 'open':  # if theyve gotten the msg but havent responded in 30mins
+            timeSinceSent = (datetime.datetime.now() -
+                             self.messageSentTime).total_seconds()
             if timeSinceSent > 1800:
                 fillAppointment()
-                #TO ADD send msg that theyve been cancelled
+                # TO ADD send msg that theyve been cancelled
 
-        if status == "confirmed": #if theyve confirmed but its 15mins past the appointment time
-            timeSinceAppointment = (datetime.datetime.now()-self.time).total_seconds()
+        if status == "confirmed":  # if theyve confirmed but its 15mins past the appointment time
+            timeSinceAppointment = (
+                datetime.datetime.now()-self.time).total_seconds()
             if timeSinceAppointment > 900:
                 self.status = "Missed"
                 self.save(update_fields=['status'])
@@ -195,16 +197,20 @@ def patientClinicDist(patientLat, patientLon, clinicLat, clinicLon):
     clinic = (clinicLat, clinicLon)
     return (geodesic(patient, clinic).km)
 
-@periodic_task(run_every=crontab(hour=4, minute=20)) #Daily reset of appointments
-def dailyReset():
-    patients = Patient.objects.all()
-    for p in patients:
-        p.notificationStatus = 'Unnotified'
-        p.save(update_fields=['notificationStatus'])
-        #remove all appointments
 
-@periodic_task(run_every=crontab(minute='*/10')) #every 10 mins, updates all appointment statuses
-def updateAppointments():
-    appointments = Appointment.objects.all()
-    for a in appointments:
-        a.checkAppointment()
+# Daily reset of appointments
+# @periodic_task(run_every=crontab(hour=4, minute=20))
+# def dailyReset():
+#     patients = Patient.objects.all()
+#     for p in patients:
+#         p.notificationStatus = 'Unnotified'
+#         p.save(update_fields=['notificationStatus'])
+#         # remove all appointments
+
+
+# # every 10 mins, updates all appointment statuses
+# @periodic_task(run_every=crontab(minute='*/10'))
+# def updateAppointments():
+#     appointments = Appointment.objects.all()
+#     for a in appointments:
+#         a.checkAppointment()
