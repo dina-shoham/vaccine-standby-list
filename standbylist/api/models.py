@@ -123,7 +123,7 @@ class Appointment(models.Model):
     messageSentTime = models.TimeField(null=True)
     date = models.DateField(auto_now_add=True)
 
-    def fillAppointment(self):  # able to be called
+    def fillAppointment(self):  # is this called???
         p = self.findPatient()
         self.patient = p
         self.messageSentTime = datetime.datetime.now()
@@ -131,21 +131,21 @@ class Appointment(models.Model):
         p.notificationStatus = 'Notified'
         p.save(update_fields=['notificationStatus'])
         
-        # send alert to twilio
-        # client = Client(ACCOUNT_SID, AUTH_TOKEN)
-        # message = "Can you make it to a vaccination appointment today at " + str(self.time) + "? Reply YES or NO"
-        # sent = client.messages.create(
-        #     body=message, to='+1'+self.patient.phoneNumber, from_='+12159774582')
-        # print(sent.sid)
+        #send alert to twilio
+        client = Client(ACCOUNT_SID, AUTH_TOKEN)
+        message = "Can you make it to a vaccination appointment today at " + str(self.time) + "? Reply YES or NO"
+        sent = client.messages.create(
+            body=message, to='+1'+self.patient.phoneNumber, from_='+12159774582')
+        print(sent.sid)
 
-    def confirmAppointment(self):  # STILL NEEDS TO BE CALLED
+    def confirmAppointment(self):
         self.status = 'confirmed'
         self.confirmationTime = datetime.datetime.now()
         self.save(update_fields=['confirmationTime', 'status'])
         self.patient.notificationStatus = 'Confirmed'
         self.patient.save(update_fields=['notificationStatus'])
 
-    def cancelAppointment(self): # STILL NEEDS TO BE CALLED
+    def cancelAppointment(self):
         self.status = 'open'
         self.save(update_fields=['status'])
         self.patient.notificationStatus ='Declined'
@@ -177,7 +177,7 @@ class Appointment(models.Model):
                 self.status = "Missed"
                 self.save(update_fields=['status'])
     
-    def findPatient(self):# grabs list of patients who have less than 2 doses, who are unnotified, and who are within range
+    def findPatient(self):# grabs list of patients who have less than 2 doses and who are unnotified
         patients = Patient.objects.filter(notificationStatus = "Unnotified").exclude(vaccinationStatus = "2D")
         
         curPatient = patients[0]
