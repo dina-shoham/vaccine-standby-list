@@ -46,7 +46,7 @@ export default class ClinicSignUp extends Component {
     };
     fetch("/api/create-clinic", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log("successful post! " + data));
+      .then((data) => this.props.history.push("/create-appointment/"));
   };
 
   render() {

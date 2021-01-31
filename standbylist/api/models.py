@@ -155,37 +155,6 @@ class Appointment(models.Model):
                 self.save(update_fields=['status'])
 
 
-# ALBERTA = 'Alberta'
-# BC = 'British Columbia'
-# MANITOBA = 'Manitoba'
-# NB = 'New Brunswick'
-# NEWFL = 'Newfoundland and Labrador'
-# NWT = 'Northwest Territories'
-# NS = 'Nova Scotia'
-# NUNAVUT = 'Nunavut'
-# ONTARIO = 'Ontario'
-# PEI = 'Prince Edward Island'
-# QUEBEC = 'Quebec'
-# SK = 'Saskatchewan'
-# YUKON = 'Yukon'
-# PROVINCE = (
-#     (ALBERTA, 'Alberta'),
-#     (BC, 'British Columbia'),
-#     (MANITOBA, 'Manitoba'),
-#     (NB, 'New Brunswick'),
-#     (NEWFL, 'Newfoundland and Labrador'),
-#     (NWT, 'Northwest Territories'),
-#     (NS, 'Nova Scotia'),
-#     (NUNAVUT, 'Nunavut'),
-#     (ONTARIO, 'Ontario'),
-#     (PEI, 'Prince Edward Island'),
-#     (QUEBEC, 'Quebec'),
-#     (SK, 'Saskatchewan'),
-#     (YUKON, 'Yukon'),
-# )
-# province = models.CharField(max_length=255, choices=PROVINCE)
-
-
 def findPatient(clinic, clinicRange):
     patients = Patient.objects.filter(vaccinationStatus != "2D",  # grabs list of patients who have less than 2 doses
                                       notificationStatus == "Unnotified",  # and who are unnotified
